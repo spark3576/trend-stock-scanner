@@ -1,0 +1,13 @@
+name = "trend-scanner-tg"
+main = "src/worker.js"
+compatibility_date = "2026-04-26"
+workers_dev = true
+
+[vars]
+GH_REPO = "spark3576/trend-stock-scanner"
+GH_WORKFLOW = "weekly-scan.yml"
+
+# Secrets는 wrangler secret put으로 별도 등록 (setup.sh가 자동 처리):
+#   TG_TOKEN          — Telegram Bot Token
+#   GH_TOKEN          — GitHub PAT (workflow scope)
+#   ALLOWED_CHAT_IDS  — 허용 chat_id 콤마구분

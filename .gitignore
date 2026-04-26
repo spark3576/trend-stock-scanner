@@ -28,3 +28,8 @@ logs/
 # Local archive scratch (생성된 archive/는 커밋함 — GitHub Pages 배포 대상)
 # 단, 임시/중간 산출물은 무시
 archive/_tmp/
+
+# Telegram 봇 자격증명 (절대 커밋 금지)
+telegram-trigger/.telegram.env
+telegram-trigger/.wrangler/
+telegram-trigger/node_modules/
