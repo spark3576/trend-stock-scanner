@@ -1,42 +1,42 @@
-# Trend Stock Scanner — settings.yaml
-# 이 파일을 settings.yaml로 복사한 뒤 편집하세요.
+# Trend Stock Scanner — 사용자 활성 설정 (모든 트렌드 소스 활성화)
+# Reddit은 키 없어도 익명 모드(JSON API)로 자동 동작
+# Google은 RSS 우선, 실패 시 pytrends fallback
 
-# -------- 스크리닝 임계값 --------
 screening:
-  vol_2w_days: 14            # 0~2주 윈도우 길이(영업일)
-  vol_2w_4w_days: 14         # 2~4주 윈도우 길이
-  vol_4w_8w_days: 28         # 4~8주 윈도우 길이
-  primary_min_ratio: 1.30    # 1차 노이즈 컷 (vol_2w / vol_4w_8w 최소)
-  secondary_ratio: 2.0       # 2차 급증 배율 (vol_2w / vol_2w_4w)
-  min_avg_volume: 50000      # 최소 평균거래량 (저유동성 종목 제외)
+  vol_2w_days: 14
+  vol_2w_4w_days: 14
+  vol_4w_8w_days: 28
+  primary_min_ratio: 1.30
+  secondary_ratio: 2.0
+  min_avg_volume: 50000
   exclude_etf: true
   exclude_spac: true
-  exclude_preferred: true    # 우선주 제외
+  exclude_preferred: true
 
-# -------- 트렌드 소스 활성화 --------
 trends:
-  google: true
-  naver: true
-  reddit: true
-  web_search: true
-  top_n_per_source: 25       # 소스별 상위 N개 키워드만 사용
+  google: true               # RSS 우선 + pytrends fallback
+  naver: true                # ✅ 동작 확인됨
+  reddit: true               # 키 없으면 익명 JSON 모드 자동
+  web_search: true           # DuckDuckGo HTML
+  top_n_per_source: 25
 
-# -------- 모멘텀 점수 가중치 --------
 momentum:
   weight_volume: 0.45
   weight_trend: 0.35
   weight_theme_density: 0.20
   classification:
-    strong: 75               # 점수 ≥ 75 → 🔴 강력주목
-    notable: 60              # 점수 ≥ 60 → 🟡 주목
-    watch: 45                # 점수 ≥ 45 → ⚪ 관찰
+    strong: 75
+    notable: 60
+    watch: 45
 
-# -------- 출력 --------
 output:
   archive_dir: archive
   excel_filename: report.xlsx
   html_filename: index.html
-  keep_history_days: 365     # 인덱스에 표시할 과거 일수
+  keep_history_days: 365
+  # ↓ 메인 허브 표시 범위 조절 (archive 폴더 자체는 영구 보존)
+  history_chart_weeks: 26      # 시계열 차트에 표시할 최근 주 수 (26주 = 6개월)
+  history_list_count: 52       # 일자별 카드 목록 표시할 최신 건수 (52건 = 1년치)
+  show_rolling_comparison: true  # 최근 4주 vs 직전 4주 비교 카드 표시
 
-# -------- 타임존 --------
 timezone: Asia/Seoul
