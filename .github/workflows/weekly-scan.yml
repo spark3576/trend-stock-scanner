@@ -4,7 +4,7 @@ on:
   # 매주 월요일 06:00 KST = 일요일 21:00 UTC
   schedule:
     - cron: '0 21 * * SUN'
-  # 수동 트리거 (Actions 탭에서 'Run workflow' 버튼)
+  # 수동 트리거
   workflow_dispatch:
     inputs:
       date:
@@ -19,7 +19,7 @@ on:
 permissions:
   contents: write    # archive/ 커밋용
   pages: write       # GitHub Pages 배포용
-  id-token: write
+  id-token: write    # OIDC
 
 concurrency:
   group: scan-${{ github.ref }}
@@ -29,6 +29,9 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -48,6 +51,8 @@ jobs:
       - name: Run scanner
         env:
           KRX_AUTH_KEY: ${{ secrets.KRX_AUTH_KEY }}
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
           NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
@@ -78,5 +83,15 @@ jobs:
             git push
           fi
 
-      # GitHub Pages 자동 배포 (archive/를 source로 설정한 경우 별도 액션 불필요)
-      # main 브랜치 push 후 Pages가 자동 빌드/배포함.
+      # ===== GitHub Pages 배포 (archive 폴더를 사이트 root로) =====
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./archive
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
