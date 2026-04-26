@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📈 Trend Stock Scanner — Archive</title>
+<style>
+  :root {
+    --primary: #1f4e78;
+    --strong: #d62828;
+    --notable: #f4a261;
+    --watch: #6c757d;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --border: #e5eaf0;
+    --text: #1f2937;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px; background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "맑은 고딕", sans-serif;
+    color: var(--text); line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1f4e78 0%, #2a6ba0 100%);
+    color: white; border-radius: 16px; padding: 32px 28px; margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(31, 78, 120, 0.15);
+  }
+  .hero h1 { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+  .hero .subtitle { font-size: 14px; opacity: 0.9; line-height: 1.7; }
+  .hero .stats { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .hero .stat-item { display: flex; flex-direction: column; }
+  .hero .stat-item .num { font-size: 24px; font-weight: 700; }
+  .hero .stat-item .lbl { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: .5px; }
+
+  /* Section */
+  .section { margin-bottom: 32px; }
+  .section h2 {
+    font-size: 18px; margin: 0 0 14px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .section h2 .count { font-size: 13px; color: var(--muted); font-weight: normal; }
+
+  /* Trend Charts (시계열) */
+  .trend-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 16px;
+  }
+  .trend-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px;
+  }
+  .trend-card h3 {
+    margin: 0 0 10px; font-size: 13px; color: var(--text); font-weight: 600;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  .trend-wrap { position: relative; height: 240px; }
+
+  /* Entry */
+  .entry {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 12px;
+    transition: transform .1s, box-shadow .1s;
+  }
+  .entry:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.05); }
+  .entry-top {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+  }
+  .entry-date { font-size: 17px; font-weight: 600; color: var(--text); }
+  .entry-date .weekday { color: var(--muted); margin-left: 8px; font-weight: normal; font-size: 14px; }
+  .entry-tag {
+    font-size: 11px; background: var(--primary); color: white;
+    padding: 3px 8px; border-radius: 10px; font-weight: 600;
+  }
+  .entry-mini {
+    display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .entry-mini .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .entry-mini .pill .num { font-weight: 600; color: var(--text); }
+  .entry-mini .pill.strong .num { color: var(--strong); }
+  .entry-mini .pill.notable .num { color: var(--notable); }
+
+  .entry-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .entry-actions a {
+    flex: 1; min-width: 130px; text-align: center;
+    padding: 10px 14px; border-radius: 8px;
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    border: 1px solid transparent;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    transition: background .15s, border-color .15s;
+  }
+  .entry-actions .btn-primary { background: var(--primary); color: white; }
+  .entry-actions .btn-primary:hover { background: #163d5e; }
+  .entry-actions .btn-outline {
+    background: white; color: var(--primary); border-color: var(--primary);
+  }
+  .entry-actions .btn-outline:hover { background: var(--primary); color: white; }
+  .entry-actions .btn-soft { background: #f0f4f9; color: var(--primary); }
+  .entry-actions .btn-soft:hover { background: #dde6ef; }
+
+  .empty {
+    text-align: center; padding: 60px 20px;
+    color: var(--muted); background: var(--card);
+    border: 1px dashed var(--border); border-radius: 12px;
+  }
+  .footer {
+    margin-top: 40px; text-align: center; color: var(--muted); font-size: 12px;
+    padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .footer a { color: var(--muted); text-decoration: none; }
+  .footer a:hover { color: var(--primary); }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px; }
+    .hero { padding: 22px 20px; }
+    .hero h1 { font-size: 24px; }
+    .entry-actions a { min-width: 100px; }
+    .trend-wrap { height: 200px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>📈 Trend Stock Scanner</h1>
+    <div class="subtitle">
+      검색트렌드 + 거래량 급등 종목 일별 스크리닝 리포트<br>
+      KRX OpenAPI · 네이버 데이터랩 · Google Trends · Reddit · Web — 매주 월요일 06:00 KST 자동 실행
+    </div>
+    {% if entries %}
+    <div class="stats">
+      <div class="stat-item"><span class="num">{{ entries|length }}</span><span class="lbl">아카이브 일수</span></div>
+      <div class="stat-item"><span class="num">{{ entries[0].date }}</span><span class="lbl">최근 스캔</span></div>
+      <div class="stat-item"><span class="num">{{ entries[0].stats.strong }}</span><span class="lbl">최근 강력주목</span></div>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if rolling and rolling.prior_strong is not none %}
+  <div class="section">
+    <h2>🔄 롤링 비교 <span class="count">최근 4주 vs 직전 4주 평균</span></h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;">
+      {% for label, recent, prior, color in [
+        ('🔴 강력주목', rolling.recent_strong, rolling.prior_strong, '#d62828'),
+        ('📊 2차 통과', rolling.recent_secondary, rolling.prior_secondary, '#1f4e78'),
+        ('🔍 트렌드 키워드', rolling.recent_trends, rolling.prior_trends, '#2a9d8f'),
+      ] %}
+      {% set delta = (recent - prior) if prior is not none else 0 %}
+      {% set delta_pct = ((delta / prior * 100) if prior else 0) %}
+      <div style="background:white; border:1px solid var(--border); border-radius:10px; padding:14px; border-left:4px solid {{ color }};">
+        <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px;">{{ label }}</div>
+        <div style="font-size:22px; font-weight:700; color:{{ color }}; margin-top:4px;">{{ recent }}</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">
+          이전 {{ prior }} →
+          <span style="color:{{ '#22c55e' if delta > 0 else '#ef4444' if delta < 0 else 'var(--muted)' }}; font-weight:600;">
+            {{ '+' if delta > 0 else '' }}{{ '%.1f'|format(delta) }} ({{ '+' if delta_pct > 0 else '' }}{{ '%.0f'|format(delta_pct) }}%)
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if has_chart_data %}
+  <div class="section">
+    <h2>📈 시계열 트렌드 변화 <span class="count">최근 {{ chart_data.labels|length }}회 (~{{ chart_window_weeks }}주)</span></h2>
+    <div class="trend-grid">
+      <div class="trend-card">
+        <h3>📊 등급별 모멘텀 종목 수 추이 (스택)</h3>
+        <div class="trend-wrap"><canvas id="chartGrade"></canvas></div>
+      </div>
+      <div class="trend-card">
+        <h3>🔥 1·2차 스크리닝 통과 종목 수</h3>
+        <div class="trend-wrap"><canvas id="chartScreen"></canvas></div>
+      </div>
+      <div class="trend-card">
+        <h3>🎯 Top 테마 추이 (모멘텀 종목 수)</h3>
+        <div class="trend-wrap"><canvas id="chartTheme"></canvas></div>
+      </div>
+      <div class="trend-card">
+        <h3>🔍 트렌드 키워드 총량 추이</h3>
+        <div class="trend-wrap"><canvas id="chartTrends"></canvas></div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="section">
+    <h2>📅 일자별 산출물 <span class="count">최근 {{ entries|length }}건{% if truncated_count > 0 %} / 전체 {{ total_archive_count }}건{% endif %}</span></h2>
+    {% if truncated_count > 0 %}
+    <div style="background:#eef2f7; border-left:3px solid var(--primary); padding:10px 14px; border-radius:6px; margin-bottom:12px; font-size:12px; color:var(--muted);">
+      📦 과거 <strong>{{ truncated_count }}건</strong>은 archive/ 폴더에 보존되어 있습니다.
+      산출물 파일은 직접 URL(<code>./YYYY-MM-DD/dashboard.html</code>)로 항상 접근 가능합니다.
+      <small>(목록·차트 표시 범위는 settings.yaml에서 조절)</small>
+    </div>
+    {% endif %}
+
+    {% if entries %}
+      {% for e in entries %}
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-date">{{ e.date }}<span class="weekday">({{ e.weekday }})</span></div>
+          {% if loop.index == 1 %}<span class="entry-tag">LATEST</span>{% endif %}
+        </div>
+        <div class="entry-mini">
+          <span class="pill">트렌드 <span class="num">{{ e.stats.trends }}</span></span>
+          <span class="pill">1차 <span class="num">{{ e.stats.primary }}</span></span>
+          <span class="pill">2차 <span class="num">{{ e.stats.secondary }}</span></span>
+          <span class="pill strong">🔴 <span class="num">{{ e.stats.strong }}</span></span>
+          <span class="pill notable">🟡 <span class="num">{{ e.stats.notable }}</span></span>
+          <span class="pill">⚪ <span class="num">{{ e.stats.watch }}</span></span>
+        </div>
+        <div class="entry-actions">
+          {% if e.dashboard_url %}<a href="{{ e.dashboard_url }}" class="btn-primary">📊 대시보드</a>{% endif %}
+          <a href="{{ e.report_url }}" class="btn-outline">📄 상세 리포트</a>
+          {% if e.excel_url %}<a href="{{ e.excel_url }}" class="btn-soft">📥 Excel</a>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty">
+        아직 생성된 리포트가 없습니다.<br>
+        <small>main.py가 처음 실행되면 여기에 표시됩니다.</small>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="footer">
+    Last updated: {{ generated_at }} ·
+    <a href="https://github.com/spark3576/trend-stock-scanner" target="_blank">View on GitHub</a><br>
+    <small>본 결과물은 정보 제공 목적이며 투자 권유가 아닙니다.</small>
+  </div>
+</div>
+
+{% if has_chart_data %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+function initIndexCharts() {
+  if (typeof Chart === 'undefined') {
+    console.warn('Chart.js 미로드 — 1초 후 재시도');
+    setTimeout(initIndexCharts, 1000);
+    return;
+  }
+  const PRIMARY = '#1f4e78';
+  const STRONG  = '#d62828';
+  const NOTABLE = '#f4a261';
+  const WATCH   = '#6c757d';
+  const PALETTE = ['#1f4e78','#d62828','#f4a261','#2a9d8f','#8a4fff','#e76f51','#264653'];
+  Chart.defaults.font.family = '-apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif';
+  Chart.defaults.color = '#374151';
+
+  const labels = {{ chart_data.labels | tojson }};
+
+  // 등급별 스택 영역
+  new Chart(document.getElementById('chartGrade'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {label:'🔴 강력주목', data:{{ chart_data.strong  | tojson }}, borderColor:STRONG,  backgroundColor:STRONG+'88',  fill:true, tension:0.3},
+        {label:'🟡 주목',     data:{{ chart_data.notable | tojson }}, borderColor:NOTABLE, backgroundColor:NOTABLE+'88', fill:true, tension:0.3},
+        {label:'⚪ 관찰',     data:{{ chart_data.watch   | tojson }}, borderColor:WATCH,   backgroundColor:WATCH+'88',   fill:true, tension:0.3},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true, stacked: true, ticks: { stepSize: 1 } } },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+    }
+  });
+
+  // 1·2차 통과 종목 수 (라인)
+  new Chart(document.getElementById('chartScreen'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {label:'1차 통과', data:{{ chart_data.primary   | tojson }}, borderColor:PRIMARY, backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'2차 통과', data:{{ chart_data.secondary | tojson }}, borderColor:STRONG,  backgroundColor:'transparent', tension:0.3, borderWidth:2},
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true } },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+    }
+  });
+
+  // Top 테마 추이
+  new Chart(document.getElementById('chartTheme'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {% for theme in theme_chart.themes %}
+        {label:'{{ theme }}', data:{{ theme_chart.series[theme] | tojson }}, borderColor:PALETTE[{{ loop.index0 }}], backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {% endfor %}
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
+    }
+  });
+
+  // 트렌드 키워드 총량
+  new Chart(document.getElementById('chartTrends'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{label:'트렌드 키워드 수', data:{{ chart_data.trends | tojson }}, backgroundColor:PRIMARY, borderRadius:4}]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true } },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIndexCharts);
+else initIndexCharts();
+</script>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+configs/settings.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs / cache
+logs/
+.cache/
+*.log
+
+# Local archive scratch (생성된 archive/는 커밋함 — GitHub Pages 배포 대상)
+# 단, 임시/중간 산출물은 무시
+archive/_tmp/

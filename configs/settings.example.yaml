@@ -1,0 +1,42 @@
+# Trend Stock Scanner — settings.yaml
+# 이 파일을 settings.yaml로 복사한 뒤 편집하세요.
+
+# -------- 스크리닝 임계값 --------
+screening:
+  vol_2w_days: 14            # 0~2주 윈도우 길이(영업일)
+  vol_2w_4w_days: 14         # 2~4주 윈도우 길이
+  vol_4w_8w_days: 28         # 4~8주 윈도우 길이
+  primary_min_ratio: 1.30    # 1차 노이즈 컷 (vol_2w / vol_4w_8w 최소)
+  secondary_ratio: 2.0       # 2차 급증 배율 (vol_2w / vol_2w_4w)
+  min_avg_volume: 50000      # 최소 평균거래량 (저유동성 종목 제외)
+  exclude_etf: true
+  exclude_spac: true
+  exclude_preferred: true    # 우선주 제외
+
+# -------- 트렌드 소스 활성화 --------
+trends:
+  google: true
+  naver: true
+  reddit: true
+  web_search: true
+  top_n_per_source: 25       # 소스별 상위 N개 키워드만 사용
+
+# -------- 모멘텀 점수 가중치 --------
+momentum:
+  weight_volume: 0.45
+  weight_trend: 0.35
+  weight_theme_density: 0.20
+  classification:
+    strong: 75               # 점수 ≥ 75 → 🔴 강력주목
+    notable: 60              # 점수 ≥ 60 → 🟡 주목
+    watch: 45                # 점수 ≥ 45 → ⚪ 관찰
+
+# -------- 출력 --------
+output:
+  archive_dir: archive
+  excel_filename: report.xlsx
+  html_filename: index.html
+  keep_history_days: 365     # 인덱스에 표시할 과거 일수
+
+# -------- 타임존 --------
+timezone: Asia/Seoul

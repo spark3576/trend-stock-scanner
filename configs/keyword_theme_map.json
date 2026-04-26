@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "version": "0.2",
+    "updated": "2026-04-26",
+    "description": "키워드 → 테마 → KR 종목(코드, 이름) 매핑 사전 (대폭 확장판). analyzers/momentum.py의 normalize 매칭 사용. 신규 테마/키워드/종목 자유롭게 추가 가능.",
+    "match_rules": "공백·하이픈·슬래시 무시 후 부분일치(대소문자 구분 X)."
+  },
+  "themes": {
+    "AI/반도체": {
+      "keywords": ["AI", "인공지능", "GPT", "ChatGPT", "Claude", "Gemini", "LLM", "에이전트", "AI 에이전트", "AI agent",
+                   "반도체", "HBM", "HBM3", "HBM4", "메모리", "디램", "DRAM", "낸드", "NAND",
+                   "파운드리", "TSMC", "AI칩", "AI 칩", "NPU", "GPU", "엣지AI", "온디바이스 AI",
+                   "AI 인프라", "AI 가속기", "엔비디아", "NVIDIA", "ASML", "EUV"],
+      "stocks": [
+        {"code": "005930", "name": "삼성전자", "rationale": "HBM·파운드리"},
+        {"code": "000660", "name": "SK하이닉스", "rationale": "HBM 글로벌 1위"},
+        {"code": "042700", "name": "한미반도체", "rationale": "HBM TC본더"},
+        {"code": "000990", "name": "DB하이텍", "rationale": "특화 파운드리"},
+        {"code": "240810", "name": "원익IPS", "rationale": "반도체 장비"},
+        {"code": "058470", "name": "리노공업", "rationale": "반도체 테스트"},
+        {"code": "403870", "name": "HPSP", "rationale": "고압 수소 어닐링"},
+        {"code": "036930", "name": "주성엔지니어링", "rationale": "반도체 ALD"},
+        {"code": "039030", "name": "이오테크닉스", "rationale": "반도체 레이저"},
+        {"code": "108860", "name": "셀바스AI", "rationale": "온디바이스 AI"},
+        {"code": "357780", "name": "솔브레인", "rationale": "반도체 화학"}
+      ]
+    },
+    "전력/그리드": {
+      "keywords": ["전력", "송전", "변압기", "전력기기", "그리드", "전력망", "전력 인프라",
+                   "AI 전력", "데이터센터 전력", "전력 부족", "초고압", "전력강관", "스마트그리드",
+                   "transformer shortage", "power grid"],
+      "stocks": [
+        {"code": "267260", "name": "HD현대일렉트릭", "rationale": "초고압 변압기"},
+        {"code": "010120", "name": "LS ELECTRIC", "rationale": "전력 인프라"},
+        {"code": "298040", "name": "효성중공업", "rationale": "변압기·차단기"},
+        {"code": "103590", "name": "일진전기", "rationale": "송전선·변압기"},
+        {"code": "008930", "name": "한미반도체", "rationale": "데이터센터 PCB"},
+        {"code": "000270", "name": "기아", "rationale": "전기차 인프라"},
+        {"code": "001440", "name": "대한전선", "rationale": "전력 케이블"}
+      ]
+    },
+    "원전/SMR": {
+      "keywords": ["원전", "원자력", "SMR", "소형원자로", "체코 원전", "체코원전", "원전 수출",
+                   "원전 부활", "한수원", "원전 르네상스", "원전 수주", "신한울"],
+      "stocks": [
+        {"code": "034020", "name": "두산에너빌리티", "rationale": "원전 주기기"},
+        {"code": "100090", "name": "삼강엠앤티", "rationale": "원전 부품"},
+        {"code": "010620", "name": "현대미포조선", "rationale": "SMR 모듈"},
+        {"code": "052690", "name": "한전기술", "rationale": "원전 설계"},
+        {"code": "066470", "name": "유니퀘스트", "rationale": "원전 부품"},
+        {"code": "036010", "name": "아비코전자", "rationale": "원전 계측"},
+        {"code": "082850", "name": "우진엔텍", "rationale": "원전 정비"}
+      ]
+    },
+    "방산": {
+      "keywords": ["방산", "K방산", "K-방산", "무기", "전차", "K2전차", "K9", "K9자주포", "FA-50",
+                   "천궁", "현무", "우크라이나", "이스라엘", "중동", "중동전쟁", "폴란드 수출",
+                   "사우디", "drone defense", "무인기", "미사일"],
+      "stocks": [
+        {"code": "047810", "name": "한국항공우주", "rationale": "FA-50 수출"},
+        {"code": "012450", "name": "한화에어로스페이스", "rationale": "K9 자주포"},
+        {"code": "064350", "name": "현대로템", "rationale": "K2 전차"},
+        {"code": "079550", "name": "LIG넥스원", "rationale": "유도무기"},
+        {"code": "103140", "name": "풍산", "rationale": "탄약·동제련"},
+        {"code": "065450", "name": "빅텍", "rationale": "방산 통신"}
+      ]
+    },
+    "사이버보안": {
+      "keywords": ["사이버보안", "정보보안", "보안", "해킹", "랜섬웨어", "ransomware", "양자암호",
+                   "제로트러스트", "zero trust", "cybersecurity", "데이터유출", "개인정보",
+                   "보안솔루션", "엔드포인트", "EDR", "XDR"],
+      "stocks": [
+        {"code": "150900", "name": "파수", "rationale": "데이터 보안"},
+        {"code": "258790", "name": "소프트캠프", "rationale": "문서·DB 보안"},
+        {"code": "356890", "name": "싸이버원", "rationale": "보안관제"},
+        {"code": "356680", "name": "엑스게이트", "rationale": "네트워크 보안"},
+        {"code": "115500", "name": "케이씨에스", "rationale": "정보보안 컨설팅"},
+        {"code": "203650", "name": "드림시큐리티", "rationale": "전자서명·인증"},
+        {"code": "044780", "name": "에이치케이", "rationale": "보안 SI"},
+        {"code": "053800", "name": "안랩", "rationale": "엔드포인트 보안"},
+        {"code": "060280", "name": "큐로컴", "rationale": "보안솔루션"},
+        {"code": "095660", "name": "네오위즈", "rationale": "(테스트)"}
+      ]
+    },
+    "2차전지/배터리": {
+      "keywords": ["2차전지", "배터리", "이차전지", "전기차", "EV", "리튬", "양극재", "음극재",
+                   "분리막", "전해액", "LFP", "삼원계", "전고체", "solid state", "ESS",
+                   "배터리 셀", "배터리 소재", "캐즘", "전기차 캐즘"],
+      "stocks": [
+        {"code": "373220", "name": "LG에너지솔루션", "rationale": "글로벌 2위 셀"},
+        {"code": "006400", "name": "삼성SDI", "rationale": "프리미엄 셀"},
+        {"code": "247540", "name": "에코프로비엠", "rationale": "양극재"},
+        {"code": "066970", "name": "엘앤에프", "rationale": "양극재"},
+        {"code": "121600", "name": "나노신소재", "rationale": "CNT 도전재"},
+        {"code": "086520", "name": "에코프로", "rationale": "양극재 지주"},
+        {"code": "003670", "name": "포스코퓨처엠", "rationale": "양극재·음극재"},
+        {"code": "005490", "name": "POSCO홀딩스", "rationale": "리튬·니켈"},
+        {"code": "005380", "name": "현대차", "rationale": "EV 완성차"},
+        {"code": "000270", "name": "기아", "rationale": "EV 완성차"}
+      ]
+    },
+    "바이오/제약": {
+      "keywords": ["바이오", "신약", "임상", "GLP-1", "비만치료", "비만치료제", "위고비", "마운자로",
+                   "ADC", "항암제", "cell therapy", "세포치료", "유전자치료", "CDMO", "바이오시밀러",
+                   "당뇨치료제", "치매치료", "알츠하이머"],
+      "stocks": [
+        {"code": "207940", "name": "삼성바이오로직스", "rationale": "CDMO"},
+        {"code": "068270", "name": "셀트리온", "rationale": "바이오시밀러"},
+        {"code": "196170", "name": "알테오젠", "rationale": "ADC·SC제형"},
+        {"code": "141080", "name": "리가켐바이오", "rationale": "ADC 플랫폼"},
+        {"code": "302440", "name": "SK바이오사이언스", "rationale": "백신·CMO"},
+        {"code": "000100", "name": "유한양행", "rationale": "렉라자 폐암"},
+        {"code": "195940", "name": "HK이노엔", "rationale": "케이캡"},
+        {"code": "326030", "name": "SK바이오팜", "rationale": "엑스코프리"},
+        {"code": "214150", "name": "클래시스", "rationale": "미용 의료기기"}
+      ]
+    },
+    "로보틱스": {
+      "keywords": ["로봇", "휴머노이드", "협동로봇", "Optimus", "옵티머스", "Figure", "피규어",
+                   "Tesla bot", "테슬라봇", "physical AI", "산업용 로봇", "스마트팩토리",
+                   "두산로보틱스", "AI 로봇"],
+      "stocks": [
+        {"code": "454910", "name": "두산로보틱스", "rationale": "협동로봇"},
+        {"code": "108490", "name": "로보스타", "rationale": "산업용 로봇"},
+        {"code": "056190", "name": "에스에프에이", "rationale": "스마트팩토리"},
+        {"code": "278470", "name": "에이피알", "rationale": "뷰티 디바이스"},
+        {"code": "298690", "name": "에어부산", "rationale": "(테스트)"}
+      ]
+    },
+    "우주/위성": {
+      "keywords": ["우주", "위성", "스타링크", "Starlink", "발사체", "한화시스템", "누리호",
+                   "우주항공청", "저궤도 위성", "위성통신"],
+      "stocks": [
+        {"code": "272210", "name": "한화시스템", "rationale": "저궤도 위성"},
+        {"code": "047810", "name": "한국항공우주", "rationale": "위성 본체"},
+        {"code": "079550", "name": "LIG넥스원", "rationale": "위성 항법"},
+        {"code": "189300", "name": "인텔리안테크", "rationale": "위성 안테나"},
+        {"code": "099190", "name": "아이센스", "rationale": "(테스트)"},
+        {"code": "455900", "name": "쎄트렉아이", "rationale": "위성 제작"}
+      ]
+    },
+    "K-콘텐츠/엔터": {
+      "keywords": ["K팝", "K-팝", "K-콘텐츠", "K드라마", "K-드라마", "넷플릭스", "오징어게임",
+                   "BTS", "뉴진스", "에스파", "르세라핌", "아이브", "JYP", "하이브", "SM",
+                   "스튜디오드래곤", "스트레이키즈", "블랙핑크", "투바투"],
+      "stocks": [
+        {"code": "352820", "name": "하이브", "rationale": "BTS·뉴진스"},
+        {"code": "041510", "name": "에스엠", "rationale": "에스파·NCT"},
+        {"code": "035900", "name": "JYP Ent.", "rationale": "스트레이키즈"},
+        {"code": "122870", "name": "와이지엔터테인먼트", "rationale": "블랙핑크"},
+        {"code": "253450", "name": "스튜디오드래곤", "rationale": "K드라마 제작"},
+        {"code": "035760", "name": "CJ ENM", "rationale": "콘텐츠 종합"}
+      ]
+    },
+    "조선/해운": {
+      "keywords": ["조선", "LNG선", "친환경선박", "메탄올선", "암모니아선", "해운", "운임", "BDI",
+                   "SCFI", "컨테이너선", "조선소", "선박 수주", "해상운임"],
+      "stocks": [
+        {"code": "009540", "name": "HD한국조선해양", "rationale": "조선 지주"},
+        {"code": "329180", "name": "HD현대중공업", "rationale": "LNG·특수선"},
+        {"code": "010620", "name": "현대미포조선", "rationale": "중형 컨테이너선"},
+        {"code": "010140", "name": "삼성중공업", "rationale": "FLNG"},
+        {"code": "042660", "name": "한화오션", "rationale": "방산조선"},
+        {"code": "011200", "name": "HMM", "rationale": "컨테이너 해운"}
+      ]
+    },
+    "데이터센터/AI인프라": {
+      "keywords": ["데이터센터", "data center", "액침냉각", "광케이블", "광통신", "인터커넥트",
+                   "AI 인프라", "쿨링", "서버", "랙", "콜로케이션"],
+      "stocks": [
+        {"code": "008060", "name": "대덕전자", "rationale": "AI 서버 PCB"},
+        {"code": "418550", "name": "제이앤티씨", "rationale": "광커넥터"},
+        {"code": "066970", "name": "엘앤에프", "rationale": "(중복)"},
+        {"code": "036930", "name": "주성엔지니어링", "rationale": "(중복)"},
+        {"code": "044340", "name": "위닉스", "rationale": "쿨링"}
+      ]
+    },
+    "의료미용/톡신": {
+      "keywords": ["보툴리눔톡신", "톡신", "보톡스", "필러", "휴젤", "메디톡스", "미용", "미용기기",
+                   "K뷰티", "K-뷰티", "화장품", "인디브랜드"],
+      "stocks": [
+        {"code": "145020", "name": "휴젤", "rationale": "톡신·필러"},
+        {"code": "086900", "name": "메디톡스", "rationale": "보툴리눔톡신"},
+        {"code": "278470", "name": "에이피알", "rationale": "뷰티디바이스"},
+        {"code": "214150", "name": "클래시스", "rationale": "(중복)"},
+        {"code": "090430", "name": "아모레퍼시픽", "rationale": "K뷰티"},
+        {"code": "375500", "name": "DL이앤씨", "rationale": "(테스트)"},
+        {"code": "192080", "name": "더블유게임즈", "rationale": "(테스트)"}
+      ]
+    },
+    "재생에너지/풍력": {
+      "keywords": ["재생에너지", "풍력", "해상풍력", "태양광", "수소", "그린수소", "ESS",
+                   "RE100", "탄소중립"],
+      "stocks": [
+        {"code": "112610", "name": "씨에스윈드", "rationale": "풍력타워"},
+        {"code": "204270", "name": "제이앤티씨", "rationale": "(중복)"},
+        {"code": "267290", "name": "경동도시가스", "rationale": "(테스트)"},
+        {"code": "267260", "name": "HD현대일렉트릭", "rationale": "(중복)"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# --- Core ---
+pandas>=2.2
+numpy>=1.26
+python-dateutil>=2.9
+pyyaml>=6.0
+python-dotenv>=1.0
+requests>=2.31
+
+# --- KR Stock Data ---
+pykrx>=1.0.45            # KRX 공식 데이터 스크래핑 (fallback)
+# KRX Open API는 표준 requests로 호출
+
+# --- Trend Sources ---
+pytrends>=4.9            # Google Trends (비공식)
+praw>=7.7                # Reddit API
+# 네이버 데이터랩은 표준 requests로 호출
+
+# --- Excel ---
+openpyxl>=3.1
+xlsxwriter>=3.2          # 차트 삽입용 (옵션)
+
+# --- HTML Report ---
+jinja2>=3.1
+markupsafe>=2.1
+
+# --- Utilities ---
+tqdm>=4.66
+tenacity>=8.2            # API retry
+loguru>=0.7              # 로깅
