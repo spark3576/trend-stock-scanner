@@ -39,7 +39,7 @@ async function ghDispatch(env) {
 
 async function ghLatestRun(env) {
   const r = await fetch(
-    `https://api.github.com/repos/${env.GH_REPO}/actions/runs?per_page=1`,
+    `https://api.github.com/repos/${env.GH_REPO}/actions/workflows/${env.GH_WORKFLOW}/runs?per_page=1`,
     {
       headers: {
         'Authorization': `Bearer ${env.GH_TOKEN}`,
