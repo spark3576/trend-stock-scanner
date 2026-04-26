@@ -1,0 +1,57 @@
+{
+  "date": "2026-04-27",
+  "trends_total": 65,
+  "primary_total": 186,
+  "secondary_total": 79,
+  "momentum_total": 10,
+  "strong": 7,
+  "notable": 0,
+  "watch": 3,
+  "theme_distribution": {
+    "사이버보안": 7,
+    "2차전지/배터리": 2,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "150900",
+      "name": "파수",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "258790",
+      "name": "소프트캠프",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "203650",
+      "name": "드림시큐리티",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "356890",
+      "name": "싸이버원",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "356680",
+      "name": "엑스게이트",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 20
+  }
+}
