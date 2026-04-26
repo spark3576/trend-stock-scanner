@@ -60,6 +60,7 @@ jobs:
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
           TZ: Asia/Seoul
         run: |
+          set -euo pipefail
           ARGS=""
           if [ -n "${{ github.event.inputs.date }}" ]; then
             ARGS="$ARGS --date ${{ github.event.inputs.date }}"

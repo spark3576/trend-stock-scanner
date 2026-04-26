@@ -34,7 +34,7 @@
         {"code": "010120", "name": "LS ELECTRIC", "rationale": "전력 인프라"},
         {"code": "298040", "name": "효성중공업", "rationale": "변압기·차단기"},
         {"code": "103590", "name": "일진전기", "rationale": "송전선·변압기"},
-        {"code": "008930", "name": "한미반도체", "rationale": "데이터센터 PCB"},
+        {"code": "042700", "name": "한미반도체", "rationale": "데이터센터 PCB"},
         {"code": "000270", "name": "기아", "rationale": "전기차 인프라"},
         {"code": "001440", "name": "대한전선", "rationale": "전력 케이블"}
       ]

@@ -3,7 +3,7 @@
 사용법:
     python scripts/check_krx.py [YYYYMMDD]
 
-기본 일자는 어제. 응답 코드/본문 일부를 출력해 키·endpoint 문제를 빠르게 진단합니다.
+기본 일자는 어제. KRX OpenAPI + pykrx fallback 양쪽 모두 진단합니다.
 """
 from __future__ import annotations
 
@@ -62,5 +62,34 @@ def main():
         print()
 
 
+def check_pykrx_fallback(bas_dd: str):
+    """pykrx fallback 경로 진단 (Naver Finance 경유 — 한국 외 IP에서도 동작해야 함)."""
+    print("=" * 60)
+    print(f"pykrx fallback 진단  |  basDd={bas_dd}")
+    print("=" * 60)
+    try:
+        from pykrx import stock as krx
+        print("✅ pykrx import 성공")
+    except ImportError:
+        print("❌ pykrx 미설치 — pip install pykrx")
+        return
+
+    # 삼성전자 1일치 테스트 (Naver Finance 경유)
+    try:
+        df = krx.get_market_ohlcv_by_date(bas_dd, bas_dd, "005930")
+        if df is not None and not df.empty:
+            print(f"✅ get_market_ohlcv_by_date (삼성전자): {len(df)}행 정상")
+            print(f"   columns: {list(df.columns)}")
+        else:
+            print(f"⚠ get_market_ohlcv_by_date (삼성전자): 빈 응답 (휴장일일 수 있음)")
+    except Exception as e:
+        print(f"❌ get_market_ohlcv_by_date 실패: {e}")
+    print()
+
+
 if __name__ == "__main__":
     main()
+    check_pykrx_fallback(
+        (date.today() - timedelta(days=1)).strftime("%Y%m%d")
+        if len(sys.argv) < 2 else sys.argv[1]
+    )

@@ -1,8 +1,14 @@
 """KRX 전종목 일별 거래량 수집기.
 
 우선순위:
-  1) KRX Open API (https://openapi.krx.co.kr/) — KRX_AUTH_KEY 필요
-  2) pykrx (스크래핑 fallback) — 무인증
+  1) KRX Open API (https://data-dbg.krx.co.kr/) — KRX_AUTH_KEY 필요
+  2) pykrx (스크래핑 fallback) — 무인증, Naver Finance 기반
+
+pykrx fallback 주의:
+  - get_market_ohlcv_by_ticker(date, market) 는 KRX getJsonData.cmd 사용 →
+    비한국 IP(GitHub Actions 등)에서 LOGOUT/빈응답 반환.
+  - 대신 종목 목록을 먼저 확보 후 get_market_ohlcv_by_date(start, end, ticker) 로
+    Naver Finance 경유 조회 → 한국 외 IP에서도 동작.
 
 반환 DataFrame schema:
   columns = [date, code, name, market, close, volume, value]
@@ -18,8 +24,9 @@ from __future__ import annotations
 
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, timedelta
-from typing import Iterable
+from io import BytesIO
 
 import pandas as pd
 import requests
@@ -30,10 +37,16 @@ from src.utils.logger import logger
 # ---------- KRX Open API ----------
 
 KRX_BASE = "https://data-dbg.krx.co.kr/svc/apis"
-# 공식 서비스 코드 (KRX OpenAPI 콘솔의 '서비스 목록' 기준)
 ENDPOINTS = {
-    "KOSPI":  f"{KRX_BASE}/sto/stk_bydd_trd",   # 유가증권 일별매매정보
-    "KOSDAQ": f"{KRX_BASE}/sto/ksq_bydd_trd",   # 코스닥 일별매매정보
+    "KOSPI":  f"{KRX_BASE}/sto/stk_bydd_trd",
+    "KOSDAQ": f"{KRX_BASE}/sto/ksq_bydd_trd",
+}
+
+_KIND_URL = "http://kind.krx.co.kr/corpgeneral/corpList.do?method=download&searchType=13"
+_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Referer": "https://data.krx.co.kr/",
 }
 
 
@@ -43,20 +56,16 @@ def _has_krx_key() -> bool:
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=8))
 def _krx_request(url: str, basDd: str) -> dict:
-    """KRX Open API 단일 호출.
-    인증키는 'AUTH_KEY' 헤더로 전달, 일자는 yyyymmdd."""
+    """KRX Open API 단일 호출. 인증키는 'AUTH_KEY' 헤더로 전달."""
     headers = {
         "AUTH_KEY": os.getenv("KRX_AUTH_KEY", ""),
         "Accept": "application/json",
     }
-    params = {"basDd": basDd}
-    r = requests.get(url, params=params, headers=headers, timeout=30)
-
+    r = requests.get(url, params={"basDd": basDd}, headers=headers, timeout=30)
     debug = os.getenv("SCANNER_DEBUG", "false").lower() == "true"
     if debug or r.status_code >= 400:
         logger.warning(
             f"[KRX raw] {url}?basDd={basDd} → status={r.status_code} "
-            f"content-type={r.headers.get('content-type')} "
             f"body={r.text[:300]}"
         )
     r.raise_for_status()
@@ -68,24 +77,16 @@ def _krx_request(url: str, basDd: str) -> dict:
 
 
 def _normalize_krx_row(row: dict, market: str, ymd: str) -> dict:
-    """KRX 응답 1행 → 표준 schema.
-    실제 KRX OpenAPI(stk_bydd_trd) 응답 키 (확인됨, 2026-04):
-      BAS_DD, ISU_CD, ISU_NM, MKT_NM, SECT_TP_NM,
-      TDD_CLSPRC, CMPPREVDD_PRC, FLUC_RT,
-      TDD_OPNPRC, TDD_HGPRC, TDD_LWPRC,
-      ACC_TRDVOL, ACC_TRDVAL, MKTCAP, LIST_SHRS
-    """
-    # 단축코드 추출: ISU_CD가 6자리이면 그대로, 12자리 ISIN(KR7…)이면 [3:9] 슬라이스
+    """KRX 응답 1행 → 표준 schema."""
     raw_code = row.get("ISU_SRT_CD") or row.get("ISU_CD") or row.get("SHRT_ISIN") or ""
     raw_code = str(raw_code).strip()
     if len(raw_code) == 12 and raw_code.startswith("KR"):
-        code = raw_code[3:9]   # ISIN → 단축코드
+        code = raw_code[3:9]
     else:
         code = raw_code.zfill(6) if raw_code else None
 
     name = row.get("ISU_NM") or row.get("ISU_ABBRV") or row.get("ISU_KR_NM")
     close = row.get("TDD_CLSPRC") or row.get("CLSPRC")
-    # 거래량 키 다중 후보 (KRX 응답 스키마 변형 대응)
     volume = (row.get("ACC_TRDVOL") or row.get("TRDVOL") or
               row.get("TDD_TRDVOL") or row.get("ACC_TRDVOL_RPT"))
     value = (row.get("ACC_TRDVAL") or row.get("TRDVAL") or
@@ -134,69 +135,162 @@ def _fetch_one_day_krx_api(d: date) -> pd.DataFrame:
 
 # ---------- pykrx fallback ----------
 
-def _fetch_one_day_pykrx(d: date) -> pd.DataFrame:
-    """pykrx로 KOSPI+KOSDAQ 전종목 일별 시세 조회."""
+_ticker_list_cache: pd.DataFrame | None = None
+
+
+def _get_ticker_list() -> pd.DataFrame:
+    """KOSPI+KOSDAQ 전종목 목록 조회.
+    캐시 우선, kind.krx.co.kr HTML 다운로드 fallback."""
+    global _ticker_list_cache
+    if _ticker_list_cache is not None and not _ticker_list_cache.empty:
+        return _ticker_list_cache
+
+    # 1차: kind.krx.co.kr (한국 외 IP에서도 동작)
+    try:
+        resp = requests.get(_KIND_URL, headers=_HEADERS, timeout=20)
+        resp.raise_for_status()
+        df = pd.read_html(BytesIO(resp.content), encoding="euc-kr")[0]
+        df["종목코드"] = df["종목코드"].astype(str).str.zfill(6)
+        df["market"] = df["시장구분"].map({"유가": "KOSPI", "코스닥": "KOSDAQ"})
+        df = df[df["market"].notna()][["종목코드", "회사명", "market"]].rename(
+            columns={"종목코드": "code", "회사명": "name"}
+        )
+        _ticker_list_cache = df.reset_index(drop=True)
+        logger.info(f"[pykrx] 종목 목록 로드: {len(_ticker_list_cache)}개")
+        return _ticker_list_cache
+    except Exception as e:
+        logger.warning(f"[pykrx] kind.krx 종목 목록 실패: {e}")
+
+    # 2차: pykrx ticker list (한국 IP에서만 안정적)
+    try:
+        from pykrx import stock as krx
+        rows = []
+        for market_code, market_name in [("KOSPI", "KOSPI"), ("KOSDAQ", "KOSDAQ")]:
+            ymd = date.today().strftime("%Y%m%d")
+            tickers = krx.get_market_ticker_list(ymd, market=market_code)
+            for t in tickers:
+                rows.append({"code": t, "name": "", "market": market_name})
+        _ticker_list_cache = pd.DataFrame(rows)
+        return _ticker_list_cache
+    except Exception as e:
+        logger.error(f"[pykrx] ticker list 수집 실패: {e}")
+        return pd.DataFrame(columns=["code", "name", "market"])
+
+
+def _fetch_ticker_range_pykrx(
+    ticker_info: dict, start_str: str, end_str: str
+) -> list[dict]:
+    """pykrx로 단일 종목의 [start, end] 기간 OHLCV 조회.
+    Naver Finance 경유 → 한국 외 IP에서도 동작."""
     from pykrx import stock as krx
-    ymd = d.strftime("%Y%m%d")
-    out = []
-    for market_code, market_name in [("KOSPI", "KOSPI"), ("KOSDAQ", "KOSDAQ")]:
-        try:
-            df = krx.get_market_ohlcv_by_ticker(ymd, market=market_code)
-            if df is None or df.empty:
+    code = ticker_info["code"]
+    name = ticker_info["name"]
+    market = ticker_info["market"]
+    try:
+        df = krx.get_market_ohlcv_by_date(start_str, end_str, code)
+        if df is None or df.empty or "거래량" not in df.columns:
+            return []
+        df.index = pd.to_datetime(df.index)
+        rows = []
+        for idx, row in df.iterrows():
+            vol = int(row["거래량"])
+            if vol == 0:
                 continue
-            # 종목명 매핑
-            tickers = df.index.tolist()
-            name_map = {t: krx.get_market_ticker_name(t) for t in tickers}
-            df = df.reset_index().rename(columns={
-                "티커": "code", "종가": "close", "거래량": "volume", "거래대금": "value",
+            rows.append({
+                "date": idx,
+                "code": code,
+                "name": name,
+                "market": market,
+                "close": int(row.get("종가", row.get("Close", 0))),
+                "volume": vol,
+                "value": int(row.get("거래대금", 0)),
             })
-            df["name"] = df["code"].map(name_map)
-            df["market"] = market_name
-            df["date"] = pd.Timestamp(ymd[:4] + "-" + ymd[4:6] + "-" + ymd[6:8])
-            out.append(df[["date", "code", "name", "market", "close", "volume", "value"]])
-        except Exception as e:
-            logger.warning(f"pykrx fetch failed for {market_name} {ymd}: {e}")
-    if not out:
+        return rows
+    except Exception:
+        return []
+
+
+def _fetch_range_pykrx(start: date, end: date) -> pd.DataFrame:
+    """pykrx로 전종목 범위 조회.
+    get_market_ohlcv_by_date 사용 (Naver Finance) → 한국 외 IP에서도 동작."""
+    ticker_df = _get_ticker_list()
+    if ticker_df.empty:
+        logger.error("[pykrx] 종목 목록 없음 — 수집 불가")
         return pd.DataFrame()
-    return pd.concat(out, ignore_index=True)
+
+    start_str = start.strftime("%Y%m%d")
+    end_str = end.strftime("%Y%m%d")
+    tickers = ticker_df.to_dict("records")
+
+    all_rows: list[dict] = []
+    done = 0
+    total = len(tickers)
+
+    with ThreadPoolExecutor(max_workers=16) as executor:
+        futures = {
+            executor.submit(_fetch_ticker_range_pykrx, t, start_str, end_str): t
+            for t in tickers
+        }
+        for future in as_completed(futures):
+            done += 1
+            if done % 300 == 0:
+                logger.info(f"  [pykrx] 진행: {done}/{total} ({done/total*100:.0f}%)")
+            rows = future.result()
+            all_rows.extend(rows)
+
+    if not all_rows:
+        return pd.DataFrame()
+    df = pd.DataFrame(all_rows)
+    logger.info(f"[pykrx] 수집 완료: {len(df):,} rows / {df['code'].nunique():,} 종목")
+    return df
 
 
 # ---------- Public API ----------
 
 def fetch_volume_range(start: date, end: date, prefer_api: bool = True) -> pd.DataFrame:
-    """[start, end] 구간 전영업일의 KOSPI+KOSDAQ 전종목 일별 시세.
-    KRX_AUTH_KEY가 설정돼 있으면 Open API 우선 시도, 실패/미설정 시 pykrx로 fallback.
+    """[start, end] 구간의 KOSPI+KOSDAQ 전종목 일별 시세.
+    KRX_AUTH_KEY가 설정돼 있으면 Open API 우선, 실패/미설정 시 pykrx fallback.
     """
     use_api = prefer_api and _has_krx_key()
     logger.info(f"[KRX] fetching {start} ~ {end} (mode={'OpenAPI' if use_api else 'pykrx'})")
 
-    cur = start
-    frames: list[pd.DataFrame] = []
-    api_success_count = 0
-    while cur <= end:
-        if cur.weekday() < 5:  # 평일만
-            day_df = pd.DataFrame()
-            if use_api:
+    # KRX API: 날짜별 순차 수집
+    if use_api:
+        frames: list[pd.DataFrame] = []
+        api_success = 0
+        cur = start
+        while cur <= end:
+            if cur.weekday() < 5:
                 day_df = _fetch_one_day_krx_api(cur)
                 if not day_df.empty:
-                    api_success_count += 1
-            if day_df.empty:
-                # API 미사용 또는 빈 응답 → pykrx
-                day_df = _fetch_one_day_pykrx(cur)
-            if not day_df.empty:
-                frames.append(day_df)
-            time.sleep(0.15)  # rate limit
-        cur += timedelta(days=1)
+                    frames.append(day_df)
+                    api_success += 1
+                time.sleep(0.15)
+            cur += timedelta(days=1)
 
-    if not frames:
-        logger.error("[KRX] 모든 일자에서 데이터를 가져오지 못했습니다.")
+        if frames:
+            full = pd.concat(frames, ignore_index=True)
+            full = full.dropna(subset=["code", "volume"])
+            full["volume"] = full["volume"].fillna(0).astype("int64")
+            logger.info(
+                f"[KRX API] collected: {len(full):,} rows / {full['date'].nunique()} days "
+                f"/ {full['code'].nunique():,} tickers (API hits={api_success})"
+            )
+            return full
+        logger.warning("[KRX API] 응답 없음 — pykrx fallback 시도")
+
+    # pykrx fallback: 종목별 범위 조회 (Naver Finance 경유, IP 제한 없음)
+    full = _fetch_range_pykrx(start, end)
+    if full.empty:
+        logger.error("[KRX] 모든 소스에서 데이터를 가져오지 못했습니다.")
         return pd.DataFrame()
 
-    full = pd.concat(frames, ignore_index=True)
     full = full.dropna(subset=["code", "volume"])
     full["volume"] = full["volume"].fillna(0).astype("int64")
-    logger.info(f"[KRX] collected: {len(full):,} rows / {full['date'].nunique()} business days "
-                f"/ {full['code'].nunique():,} unique tickers (API hits={api_success_count})")
+    logger.info(
+        f"[pykrx] collected: {len(full):,} rows / {full['date'].nunique()} days "
+        f"/ {full['code'].nunique():,} unique tickers"
+    )
     return full
 
 
@@ -211,9 +305,15 @@ def filter_universe(
         return df
     out = df.copy()
     if exclude_etf:
-        out = out[~out["name"].str.contains("ETF|ETN|ARIRANG|TIGER|KODEX|KOSEF|KBSTAR|HANARO|SOL|RISE", case=False, na=False)]
+        out = out[~out["name"].str.contains(
+            "ETF|ETN|ARIRANG|TIGER|KODEX|KOSEF|KBSTAR|HANARO|SOL|RISE",
+            case=False, na=False,
+        )]
     if exclude_spac:
         out = out[~out["name"].str.contains("스팩|SPAC", case=False, na=False)]
     if exclude_preferred:
-        out = out[~out["code"].str.endswith(("5", "7", "9"))]  # 우선주 코드 끝자리 휴리스틱
+        # 우선주 코드: 5번째 자리(index 4)가 '8'이고 마지막이 '5'인 6자리 코드
+        # 또는 코드 끝자리 '5'인 경우 대부분 우선주 (보수적 휴리스틱)
+        mask_preferred = out["code"].str.len().eq(6) & out["code"].str[-1].isin(["5"])
+        out = out[~mask_preferred]
     return out
