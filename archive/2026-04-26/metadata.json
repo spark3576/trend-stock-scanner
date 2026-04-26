@@ -1,58 +1,16 @@
 {
   "date": "2026-04-26",
-  "trends_total": 98,
-  "primary_total": 207,
-  "secondary_total": 93,
-  "momentum_total": 11,
-  "strong": 8,
-  "notable": 2,
-  "watch": 1,
-  "theme_distribution": {
-    "사이버보안": 7,
-    "2차전지/배터리": 3,
-    "AI/반도체": 1
-  },
-  "top_picks": [
-    {
-      "code": "150900",
-      "name": "파수",
-      "score": 82.5,
-      "classification": "🔴 강력주목",
-      "theme": "사이버보안"
-    },
-    {
-      "code": "258790",
-      "name": "소프트캠프",
-      "score": 82.5,
-      "classification": "🔴 강력주목",
-      "theme": "사이버보안"
-    },
-    {
-      "code": "356890",
-      "name": "싸이버원",
-      "score": 82.5,
-      "classification": "🔴 강력주목",
-      "theme": "사이버보안"
-    },
-    {
-      "code": "356680",
-      "name": "엑스게이트",
-      "score": 82.5,
-      "classification": "🔴 강력주목",
-      "theme": "사이버보안"
-    },
-    {
-      "code": "115500",
-      "name": "케이씨에스",
-      "score": 82.5,
-      "classification": "🔴 강력주목",
-      "theme": "사이버보안"
-    }
-  ],
+  "trends_total": 45,
+  "primary_total": 0,
+  "secondary_total": 0,
+  "momentum_total": 0,
+  "strong": 0,
+  "notable": 0,
+  "watch": 0,
+  "theme_distribution": {},
+  "top_picks": [],
   "trend_sources": {
-    "reddit": 37,
     "web": 25,
-    "google": 20,
-    "naver": 16
+    "google": 20
   }
 }

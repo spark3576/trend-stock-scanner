@@ -141,7 +141,7 @@
     <div class="stats">
       <div class="stat-item"><span class="num">1</span><span class="lbl">아카이브 일수</span></div>
       <div class="stat-item"><span class="num">2026-04-26</span><span class="lbl">최근 스캔</span></div>
-      <div class="stat-item"><span class="num">8</span><span class="lbl">최근 강력주목</span></div>
+      <div class="stat-item"><span class="num">0</span><span class="lbl">최근 강력주목</span></div>
     </div>
     
   </div>
@@ -184,12 +184,12 @@
           <span class="entry-tag">LATEST</span>
         </div>
         <div class="entry-mini">
-          <span class="pill">트렌드 <span class="num">98</span></span>
-          <span class="pill">1차 <span class="num">207</span></span>
-          <span class="pill">2차 <span class="num">93</span></span>
-          <span class="pill strong">🔴 <span class="num">8</span></span>
-          <span class="pill notable">🟡 <span class="num">2</span></span>
-          <span class="pill">⚪ <span class="num">1</span></span>
+          <span class="pill">트렌드 <span class="num">45</span></span>
+          <span class="pill">1차 <span class="num">0</span></span>
+          <span class="pill">2차 <span class="num">0</span></span>
+          <span class="pill strong">🔴 <span class="num">0</span></span>
+          <span class="pill notable">🟡 <span class="num">0</span></span>
+          <span class="pill">⚪ <span class="num">0</span></span>
         </div>
         <div class="entry-actions">
           <a href="./2026-04-26/dashboard.html" class="btn-primary">📊 대시보드</a>
@@ -202,7 +202,7 @@
   </div>
 
   <div class="footer">
-    Last updated: 2026-04-26 20:15 KST ·
+    Last updated: 2026-04-26 22:05 KST ·
     <a href="https://github.com/spark3576/trend-stock-scanner" target="_blank">View on GitHub</a><br>
     <small>본 결과물은 정보 제공 목적이며 투자 권유가 아닙니다.</small>
   </div>
@@ -233,9 +233,9 @@ function initIndexCharts() {
     data: {
       labels: labels,
       datasets: [
-        {label:'🔴 강력주목', data:[8], borderColor:STRONG,  backgroundColor:STRONG+'88',  fill:true, tension:0.3},
-        {label:'🟡 주목',     data:[2], borderColor:NOTABLE, backgroundColor:NOTABLE+'88', fill:true, tension:0.3},
-        {label:'⚪ 관찰',     data:[1], borderColor:WATCH,   backgroundColor:WATCH+'88',   fill:true, tension:0.3},
+        {label:'🔴 강력주목', data:[0], borderColor:STRONG,  backgroundColor:STRONG+'88',  fill:true, tension:0.3},
+        {label:'🟡 주목',     data:[0], borderColor:NOTABLE, backgroundColor:NOTABLE+'88', fill:true, tension:0.3},
+        {label:'⚪ 관찰',     data:[0], borderColor:WATCH,   backgroundColor:WATCH+'88',   fill:true, tension:0.3},
       ]
     },
     options: {
@@ -251,8 +251,8 @@ function initIndexCharts() {
     data: {
       labels: labels,
       datasets: [
-        {label:'1차 통과', data:[207], borderColor:PRIMARY, backgroundColor:'transparent', tension:0.3, borderWidth:2},
-        {label:'2차 통과', data:[93], borderColor:STRONG,  backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'1차 통과', data:[0], borderColor:PRIMARY, backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'2차 통과', data:[0], borderColor:STRONG,  backgroundColor:'transparent', tension:0.3, borderWidth:2},
       ]
     },
     options: {
@@ -269,12 +269,6 @@ function initIndexCharts() {
       labels: labels,
       datasets: [
         
-        {label:'사이버보안', data:[7], borderColor:PALETTE[0], backgroundColor:'transparent', tension:0.3, borderWidth:2},
-        
-        {label:'2차전지/배터리', data:[3], borderColor:PALETTE[1], backgroundColor:'transparent', tension:0.3, borderWidth:2},
-        
-        {label:'AI/반도체', data:[1], borderColor:PALETTE[2], backgroundColor:'transparent', tension:0.3, borderWidth:2},
-        
       ]
     },
     options: {
@@ -289,7 +283,7 @@ function initIndexCharts() {
     type: 'bar',
     data: {
       labels: labels,
-      datasets: [{label:'트렌드 키워드 수', data:[98], backgroundColor:PRIMARY, borderRadius:4}]
+      datasets: [{label:'트렌드 키워드 수', data:[45], backgroundColor:PRIMARY, borderRadius:4}]
     },
     options: {
       responsive: true, maintainAspectRatio: false,
