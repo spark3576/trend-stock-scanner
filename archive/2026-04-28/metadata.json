@@ -1,0 +1,58 @@
+{
+  "date": "2026-04-28",
+  "trends_total": 61,
+  "primary_total": 202,
+  "secondary_total": 90,
+  "momentum_total": 9,
+  "strong": 5,
+  "notable": 1,
+  "watch": 3,
+  "theme_distribution": {
+    "사이버보안": 5,
+    "2차전지/배터리": 2,
+    "전력/그리드": 1,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "150900",
+      "name": "파수",
+      "score": 91.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "203650",
+      "name": "드림시큐리티",
+      "score": 91.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "356890",
+      "name": "싸이버원",
+      "score": 91.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "356680",
+      "name": "엑스게이트",
+      "score": 91.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "115500",
+      "name": "케이씨에스",
+      "score": 91.2,
+      "classification": "🔴 강력주목",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 16
+  }
+}
