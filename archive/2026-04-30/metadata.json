@@ -1,0 +1,58 @@
+{
+  "date": "2026-04-30",
+  "trends_total": 57,
+  "primary_total": 318,
+  "secondary_total": 158,
+  "momentum_total": 10,
+  "strong": 0,
+  "notable": 8,
+  "watch": 2,
+  "theme_distribution": {
+    "전력/그리드": 3,
+    "[직접매칭]": 3,
+    "2차전지/배터리": 3,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "010120",
+      "name": "LS ELECTRIC",
+      "score": 72.4,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 70.9,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "456040",
+      "name": "OCI",
+      "score": 70.1,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 68.9,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 68.0,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 12
+  }
+}
