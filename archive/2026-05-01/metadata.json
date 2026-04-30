@@ -1,0 +1,57 @@
+{
+  "date": "2026-05-01",
+  "trends_total": 59,
+  "primary_total": 321,
+  "secondary_total": 153,
+  "momentum_total": 7,
+  "strong": 0,
+  "notable": 5,
+  "watch": 2,
+  "theme_distribution": {
+    "전력/그리드": 4,
+    "[직접매칭]": 2,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "010120",
+      "name": "LS ELECTRIC",
+      "score": 74.4,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 70.6,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 70.6,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 68.8,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "298040",
+      "name": "효성중공업",
+      "score": 61.8,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 14
+  }
+}
