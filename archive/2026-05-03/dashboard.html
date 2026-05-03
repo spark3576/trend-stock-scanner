@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📊 Trend Stock Scanner — Dashboard 2026-05-03</title>
+<style>
+  :root {
+    --primary: #1f4e78;
+    --strong: #d62828;
+    --notable: #f4a261;
+    --watch: #6c757d;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --border: #e5eaf0;
+    --text: #1f2937;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px;
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "맑은 고딕", sans-serif;
+    color: var(--text); line-height: 1.5;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+  }
+  .header h1 { font-size: 28px; margin: 0 0 4px; color: var(--primary); }
+  .header .meta { color: var(--muted); font-size: 14px; }
+  .header .links a {
+    margin-left: 8px; padding: 8px 14px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 6px;
+    text-decoration: none; color: var(--primary); font-size: 13px;
+  }
+  .header .links a:hover { background: var(--primary); color: white; }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px; margin-bottom: 28px;
+  }
+  .kpi {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; position: relative; overflow: hidden;
+  }
+  .kpi::before {
+    content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%;
+    background: var(--primary);
+  }
+  .kpi.strong::before { background: var(--strong); }
+  .kpi.notable::before { background: var(--notable); }
+  .kpi.watch::before { background: var(--watch); }
+  .kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
+  .kpi .value {
+    font-size: 30px; font-weight: 700; color: var(--primary); margin-top: 6px;
+    line-height: 1;
+  }
+  .kpi.strong .value { color: var(--strong); }
+  .kpi.notable .value { color: var(--notable); }
+  .kpi.watch .value { color: var(--watch); }
+  .kpi .sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* Chart Grid */
+  .chart-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 16px; margin-bottom: 28px;
+  }
+  .chart-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px;
+  }
+  .chart-card h3 {
+    margin: 0 0 12px; font-size: 14px; color: var(--text); font-weight: 600;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .chart-wrap { position: relative; height: 240px; }
+
+  /* Top Picks Table */
+  .picks-section { margin-bottom: 24px; }
+  .picks-section h2 {
+    font-size: 18px; margin: 0 0 12px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary);
+  }
+  .picks-table {
+    width: 100%; background: var(--card); border-collapse: collapse;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+  .picks-table thead th {
+    background: var(--primary); color: white; padding: 10px;
+    text-align: left; font-size: 12px; font-weight: 600;
+  }
+  .picks-table tbody td { padding: 10px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .picks-table tbody tr:last-child td { border-bottom: none; }
+  .picks-table tbody tr:hover { background: #fafbfd; }
+  .picks-table .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 600; color: white;
+  }
+  .badge.strong { background: var(--strong); }
+  .badge.notable { background: var(--notable); }
+  .badge.watch { background: var(--watch); }
+  .picks-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* Trends keyword cloud */
+  .keyword-cloud {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+  }
+  .keyword-cloud .kw {
+    display: inline-block; padding: 4px 10px; background: #eaf2f8;
+    color: var(--primary); border-radius: 12px; font-size: 12px;
+  }
+  .keyword-cloud .kw.score-high { background: var(--primary); color: white; font-weight: 600; }
+  .keyword-cloud .kw.score-mid { background: #d1e1ec; color: var(--primary); }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 30px; padding: 14px; background: #fff8e1;
+    border-left: 4px solid #fbc02d; border-radius: 6px;
+    font-size: 12px; color: #5d4037;
+  }
+
+  /* Home button (top) */
+  .home-bar {
+    margin-bottom: 16px;
+  }
+  .home-bar a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 6px; text-decoration: none; color: var(--primary);
+    font-size: 13px; font-weight: 500;
+    transition: background .15s;
+  }
+  .home-bar a:hover { background: var(--primary); color: white; }
+
+  /* Bottom navigation */
+  .nav-footer {
+    margin-top: 30px; display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .nav-footer a {
+    padding: 10px 18px; border-radius: 8px;
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    border: 1px solid var(--border);
+  }
+  .nav-footer .nav-home { background: var(--primary); color: white; border-color: var(--primary); }
+  .nav-footer .nav-home:hover { background: #163d5e; }
+  .nav-footer .nav-other { background: var(--card); color: var(--primary); }
+  .nav-footer .nav-other:hover { background: #eef2f7; }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .header h1 { font-size: 22px; }
+    .chart-wrap { height: 200px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Home button -->
+  <div class="home-bar">
+    <a href="../index.html">← 아카이브 홈</a>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>📊 Trend Stock Scanner Dashboard</h1>
+      <div class="meta">
+        트리거 일자 <strong>2026-05-03</strong> · 생성 2026-05-03 11:01 KST ·
+        분석 종목 368개 → 강력주목 <strong style="color:var(--strong)">0</strong>개
+      </div>
+    </div>
+    <div class="links">
+      <a href="./index.html">📄 상세 리포트</a>
+      <a href="./report.xlsx">📥 Excel</a>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">트렌드 키워드</div><div class="value">57</div><div class="sub">4개 소스 합계</div></div>
+    <div class="kpi"><div class="label">1차 통과 (지속상승)</div><div class="value">368</div><div class="sub">8w &lt; 4w &lt; 2w 평균</div></div>
+    <div class="kpi"><div class="label">2차 통과 (2배 급증)</div><div class="value">159</div><div class="sub">2w/2-4w ≥ 2.0</div></div>
+    <div class="kpi strong"><div class="label">🔴 강력주목</div><div class="value">0</div><div class="sub">점수 ≥ 75</div></div>
+    <div class="kpi notable"><div class="label">🟡 주목</div><div class="value">5</div><div class="sub">점수 ≥ 60</div></div>
+    <div class="kpi watch"><div class="label">⚪ 관찰</div><div class="value">7</div><div class="sub">점수 ≥ 45</div></div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>📊 등급 분포</h3>
+      <div class="chart-wrap"><canvas id="chartGrade"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>🏆 Top 10 종목 모멘텀 점수</h3>
+      <div class="chart-wrap"><canvas id="chartTopStocks"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>🎯 테마별 모멘텀 종목 수</h3>
+      <div class="chart-wrap"><canvas id="chartTheme"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>🔍 트렌드 소스별 기여</h3>
+      <div class="chart-wrap"><canvas id="chartSource"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Top Picks -->
+  <div class="picks-section">
+    <h2>🏆 Top Picks</h2>
+    
+      <table class="picks-table">
+        <thead>
+          <tr><th>등급</th><th>점수</th><th>종목</th><th>코드</th><th>시장</th><th>테마</th>
+              <th class="num">거래량시그널</th><th class="num">트렌드시그널</th><th>매칭 키워드</th></tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td>
+              <span class="badge notable">주목</span>
+              
+            </td>
+            <td class="num"><strong>68.5</strong></td>
+            <td><strong>LS ELECTRIC</strong></td>
+            <td>010120</td>
+            <td>KOSPI</td>
+            <td>#전력/그리드</td>
+            <td class="num">64.6</td>
+            <td class="num">55.6</td>
+            <td style="font-size:11px; color:var(--muted)">데이터센터 전력, 전력 부족, 전력기기, 전력망, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge notable">주목</span>
+              
+            </td>
+            <td class="num"><strong>67.8</strong></td>
+            <td><strong>WISCOM</strong></td>
+            <td>024070</td>
+            <td>KOSPI</td>
+            <td>#[직접매칭]</td>
+            <td class="num">97.5</td>
+            <td class="num">54.0</td>
+            <td style="font-size:11px; color:var(--muted)">com</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge notable">주목</span>
+              
+            </td>
+            <td class="num"><strong>66.8</strong></td>
+            <td><strong>대한전선</strong></td>
+            <td>001440</td>
+            <td>KOSPI</td>
+            <td>#전력/그리드</td>
+            <td class="num">60.9</td>
+            <td class="num">55.6</td>
+            <td style="font-size:11px; color:var(--muted)">데이터센터 전력, 전력 부족, 전력기기, 전력망, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge notable">주목</span>
+              
+            </td>
+            <td class="num"><strong>66.5</strong></td>
+            <td><strong>일진전기</strong></td>
+            <td>103590</td>
+            <td>KOSPI</td>
+            <td>#전력/그리드</td>
+            <td class="num">60.0</td>
+            <td class="num">55.6</td>
+            <td style="font-size:11px; color:var(--muted)">데이터센터 전력, 전력 부족, 전력기기, 전력망, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge notable">주목</span>
+              
+            </td>
+            <td class="num"><strong>61.0</strong></td>
+            <td><strong>HD현대일렉트릭</strong></td>
+            <td>267260</td>
+            <td>KOSPI</td>
+            <td>#전력/그리드</td>
+            <td class="num">47.9</td>
+            <td class="num">55.6</td>
+            <td style="font-size:11px; color:var(--muted)">데이터센터 전력, 전력 부족, 전력기기, 전력망, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>60.0</strong></td>
+            <td><strong>더블유게임즈</strong></td>
+            <td>192080</td>
+            <td>KOSPI</td>
+            <td>#의료미용/톡신</td>
+            <td class="num">76.1</td>
+            <td class="num">45.0</td>
+            <td style="font-size:11px; color:var(--muted)">톡신</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>59.6</strong></td>
+            <td><strong>두산로보틱스</strong></td>
+            <td>454910</td>
+            <td>KOSPI</td>
+            <td>#로보틱스</td>
+            <td class="num">61.6</td>
+            <td class="num">77.0</td>
+            <td style="font-size:11px; color:var(--muted)">두산로보틱스</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>58.4</strong></td>
+            <td><strong>효성중공업</strong></td>
+            <td>298040</td>
+            <td>KOSPI</td>
+            <td>#전력/그리드</td>
+            <td class="num">42.2</td>
+            <td class="num">55.6</td>
+            <td style="font-size:11px; color:var(--muted)">데이터센터 전력, 전력 부족, 전력기기, 전력망, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>54.6</strong></td>
+            <td><strong>아모레퍼시픽</strong></td>
+            <td>090430</td>
+            <td>KOSPI</td>
+            <td>#의료미용/톡신</td>
+            <td class="num">64.1</td>
+            <td class="num">45.0</td>
+            <td style="font-size:11px; color:var(--muted)">톡신</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>53.5</strong></td>
+            <td><strong>나노신소재</strong></td>
+            <td>121600</td>
+            <td>KOSDAQ</td>
+            <td>#2차전지/배터리</td>
+            <td class="num">60.0</td>
+            <td class="num">47.0</td>
+            <td style="font-size:11px; color:var(--muted)">배터리 소재</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>53.2</strong></td>
+            <td><strong>삼성SDI</strong></td>
+            <td>006400</td>
+            <td>KOSPI</td>
+            <td>#2차전지/배터리</td>
+            <td class="num">59.4</td>
+            <td class="num">47.0</td>
+            <td style="font-size:11px; color:var(--muted)">배터리 소재</td>
+          </tr>
+        
+          <tr>
+            <td>
+              <span class="badge watch">관찰</span>
+              
+            </td>
+            <td class="num"><strong>50.1</strong></td>
+            <td><strong>DB하이텍</strong></td>
+            <td>000990</td>
+            <td>KOSPI</td>
+            <td>#AI/반도체</td>
+            <td class="num">60.0</td>
+            <td class="num">51.7</td>
+            <td style="font-size:11px; color:var(--muted)">메모리, AI 인프라, AI 전력</td>
+          </tr>
+        
+          <tr>
+            <td>
+              —
+            </td>
+            <td class="num"><strong>44.9</strong></td>
+            <td><strong>LS</strong></td>
+            <td>006260</td>
+            <td>KOSPI</td>
+            <td>#[직접매칭]</td>
+            <td class="num">40.4</td>
+            <td class="num">62.0</td>
+            <td style="font-size:11px; color:var(--muted)">WallStreetBets</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    
+  </div>
+
+  <!-- Keyword Cloud -->
+  <div class="picks-section">
+    <h2>🔥 Top 트렌드 키워드</h2>
+    <div class="keyword-cloud">
+      
+        <span class="kw score-high"
+              title="google | 100점">두산베어스</span>
+      
+        <span class="kw score-high"
+              title="google | 100점">lafc vs san diego fc</span>
+      
+        <span class="kw score-high"
+              title="web | 100점">Stocks</span>
+      
+        <span class="kw score-high"
+              title="google | 96점">henry county va</span>
+      
+        <span class="kw score-high"
+              title="google | 96점">배나라</span>
+      
+        <span class="kw score-high"
+              title="web | 94점">수혜주</span>
+      
+        <span class="kw score-high"
+              title="google | 92점">순천만국가정원</span>
+      
+        <span class="kw score-high"
+              title="google | 92점">austin riley</span>
+      
+        <span class="kw score-high"
+              title="google | 88점">walton goggins</span>
+      
+        <span class="kw score-high"
+              title="google | 88점">부산 날씨</span>
+      
+        <span class="kw score-high"
+              title="web | 86점">Thematic</span>
+      
+        <span class="kw score-high"
+              title="google | 84점">oregon state baseball</span>
+      
+        <span class="kw score-high"
+              title="google | 84점">롯데홈쇼핑</span>
+      
+        <span class="kw score-high"
+              title="google | 80점">워렌 버핏</span>
+      
+        <span class="kw score-high"
+              title="google | 80점">lara trump</span>
+      
+        <span class="kw score-mid"
+              title="web | 78점">Top</span>
+      
+        <span class="kw score-mid"
+              title="web | 78점">관련주</span>
+      
+        <span class="kw score-mid"
+              title="web | 78점">ETFs</span>
+      
+        <span class="kw score-mid"
+              title="naver | 77점">두산로보틱스</span>
+      
+        <span class="kw score-mid"
+              title="google | 76점">마누엘 우가르테</span>
+      
+        <span class="kw score-mid"
+              title="google | 76점">cal raleigh</span>
+      
+        <span class="kw score-mid"
+              title="google | 72점">pge outage</span>
+      
+        <span class="kw score-mid"
+              title="google | 72점">부동산</span>
+      
+        <span class="kw score-mid"
+              title="web | 70점">테마주</span>
+      
+        <span class="kw score-mid"
+              title="web | 70점">KOSPI</span>
+      
+        <span class="kw score-mid"
+              title="web | 70점">Trending</span>
+      
+        <span class="kw score-mid"
+              title="web | 70점">Stock</span>
+      
+        <span class="kw score-mid"
+              title="google | 68점">shakira</span>
+      
+        <span class="kw score-mid"
+              title="google | 68점">2026</span>
+      
+        <span class="kw score-mid"
+              title="naver | 67점">데이터센터 전력</span>
+      
+        <span class="kw score-mid"
+              title="google | 64점">폴리마켓</span>
+      
+        <span class="kw score-mid"
+              title="google | 64점">gavin adcock</span>
+      
+        <span class="kw score-mid"
+              title="naver | 62점">전력 부족</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">Market</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">ETF</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">Most</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">WallStreetBets</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">블로그</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">네이버</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">총정리</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">Reddit</span>
+      
+        <span class="kw score-mid"
+              title="web | 62점">Top</span>
+      
+        <span class="kw score-mid"
+              title="naver | 57점">메모리</span>
+      
+        <span class="kw score-mid"
+              title="naver | 55점">전력기기</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">com</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">Kospi</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">종목토론방</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">커뮤니티</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">실시간</span>
+      
+        <span class="kw score-mid"
+              title="web | 54점">Today</span>
+      
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ 본 결과물은 정보 제공 목적이며 투자 권유가 아닙니다.
+    트렌드 데이터는 후행 지표일 수 있으며, 거래량 급증은 악재성 매도 신호일 수도 있습니다.
+    뉴스·등락률 등 다른 지표와 교차검증 후 의사결정하세요.
+  </div>
+
+  <!-- Bottom navigation -->
+  <div class="nav-footer">
+    <a href="../index.html" class="nav-home">🏠 아카이브 홈</a>
+    <a href="./index.html" class="nav-other">📄 상세 리포트</a>
+    <a href="./report.xlsx" class="nav-other">📥 Excel 다운로드</a>
+  </div>
+
+</div>
+
+<!-- Chart.js (body 끝, defer로 안정 로드) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+function initCharts() {
+  if (typeof Chart === 'undefined') {
+    console.warn('Chart.js 미로드 — 1초 후 재시도');
+    setTimeout(initCharts, 1000);
+    return;
+  }
+const PRIMARY  = '#1f4e78';
+const STRONG   = '#d62828';
+const NOTABLE  = '#f4a261';
+const WATCH    = '#6c757d';
+const PALETTE  = ['#1f4e78','#d62828','#f4a261','#2a9d8f','#8a4fff','#e76f51','#264653','#6c757d','#3a86ff','#ffba08'];
+
+Chart.defaults.font.family = '-apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif';
+Chart.defaults.color = '#374151';
+
+// 등급 분포 도넛
+new Chart(document.getElementById('chartGrade'), {
+  type: 'doughnut',
+  data: {
+    labels: ['🔴 강력주목', '🟡 주목', '⚪ 관찰'],
+    datasets: [{
+      data: [0, 5, 7],
+      backgroundColor: [STRONG, NOTABLE, WATCH],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    cutout: '65%',
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+  }
+});
+
+// Top 종목 가로막대
+new Chart(document.getElementById('chartTopStocks'), {
+  type: 'bar',
+  data: {
+    labels: ["LS ELECTRIC (010120)", "WISCOM (024070)", "\ub300\ud55c\uc804\uc120 (001440)", "\uc77c\uc9c4\uc804\uae30 (103590)", "HD\ud604\ub300\uc77c\ub809\ud2b8\ub9ad (267260)", "\ub354\ube14\uc720\uac8c\uc784\uc988 (192080)", "\ub450\uc0b0\ub85c\ubcf4\ud2f1\uc2a4 (454910)", "\ud6a8\uc131\uc911\uacf5\uc5c5 (298040)", "\uc544\ubaa8\ub808\ud37c\uc2dc\ud53d (090430)", "\ub098\ub178\uc2e0\uc18c\uc7ac (121600)"],
+    datasets: [{
+      label: 'Momentum Score',
+      data: [68.5, 67.8, 66.8, 66.5, 61.0, 60.0, 59.6, 58.4, 54.6, 53.5],
+      backgroundColor: ["#f4a261", "#f4a261", "#f4a261", "#f4a261", "#f4a261", "#6c757d", "#6c757d", "#6c757d", "#6c757d", "#6c757d"],
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    maintainAspectRatio: false,
+    scales: { x: { beginAtZero: true, max: 100 } },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// 테마별 종목수 막대
+new Chart(document.getElementById('chartTheme'), {
+  type: 'bar',
+  data: {
+    labels: ["\uc804\ub825/\uadf8\ub9ac\ub4dc", "[\uc9c1\uc811\ub9e4\uce6d]", "\uc758\ub8cc\ubbf8\uc6a9/\ud1a1\uc2e0", "2\ucc28\uc804\uc9c0/\ubc30\ud130\ub9ac", "\ub85c\ubcf4\ud2f1\uc2a4", "AI/\ubc18\ub3c4\uccb4"],
+    datasets: [{
+      label: '종목 수',
+      data: [5, 2, 2, 2, 1, 1],
+      backgroundColor: PRIMARY,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// 트렌드 소스 도넛
+new Chart(document.getElementById('chartSource'), {
+  type: 'doughnut',
+  data: {
+    labels: ["web", "google", "naver"],
+    datasets: [{
+      data: [25, 20, 12],
+      backgroundColor: PALETTE,
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+  }
+});
+} // end initCharts
+
+// DOMContentLoaded 후 + Chart.js 로드 후 실행
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCharts);
+} else {
+  initCharts();
+}
+</script>
+</body>
+</html>

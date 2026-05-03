@@ -1,0 +1,60 @@
+{
+  "date": "2026-05-03",
+  "trends_total": 57,
+  "primary_total": 368,
+  "secondary_total": 159,
+  "momentum_total": 13,
+  "strong": 0,
+  "notable": 5,
+  "watch": 7,
+  "theme_distribution": {
+    "전력/그리드": 5,
+    "[직접매칭]": 2,
+    "의료미용/톡신": 2,
+    "2차전지/배터리": 2,
+    "로보틱스": 1,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "010120",
+      "name": "LS ELECTRIC",
+      "score": 68.5,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 67.8,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 66.8,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "score": 61.0,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 12
+  }
+}
