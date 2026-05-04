@@ -1,0 +1,60 @@
+{
+  "date": "2026-05-05",
+  "trends_total": 53,
+  "primary_total": 414,
+  "secondary_total": 175,
+  "momentum_total": 19,
+  "strong": 3,
+  "notable": 13,
+  "watch": 3,
+  "theme_distribution": {
+    "전력/그리드": 5,
+    "2차전지/배터리": 4,
+    "[직접매칭]": 3,
+    "사이버보안": 3,
+    "AI/반도체": 3,
+    "로보틱스": 1
+  },
+  "top_picks": [
+    {
+      "code": "005490",
+      "name": "POSCO홀딩스",
+      "score": 79.6,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "score": 78.1,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 78.1,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "456040",
+      "name": "OCI",
+      "score": 74.0,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "373220",
+      "name": "LG에너지솔루션",
+      "score": 73.3,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 8
+  }
+}
