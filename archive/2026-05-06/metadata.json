@@ -1,0 +1,61 @@
+{
+  "date": "2026-05-06",
+  "trends_total": 54,
+  "primary_total": 424,
+  "secondary_total": 165,
+  "momentum_total": 18,
+  "strong": 1,
+  "notable": 14,
+  "watch": 3,
+  "theme_distribution": {
+    "전력/그리드": 5,
+    "2차전지/배터리": 3,
+    "로보틱스": 3,
+    "AI/반도체": 2,
+    "재생에너지/풍력": 2,
+    "사이버보안": 2,
+    "[직접매칭]": 1
+  },
+  "top_picks": [
+    {
+      "code": "005490",
+      "name": "POSCO홀딩스",
+      "score": 75.6,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 72.5,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 71.0,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "score": 70.6,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 9
+  }
+}
