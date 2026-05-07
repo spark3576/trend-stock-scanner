@@ -1,0 +1,57 @@
+{
+  "date": "2026-05-08",
+  "trends_total": 55,
+  "primary_total": 440,
+  "secondary_total": 165,
+  "momentum_total": 5,
+  "strong": 0,
+  "notable": 3,
+  "watch": 2,
+  "theme_distribution": {
+    "재생에너지/풍력": 2,
+    "[직접매칭]": 2,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 74.8,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "score": 70.7,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 70.3,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 59.7,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "006260",
+      "name": "LS",
+      "score": 47.6,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 10
+  }
+}
