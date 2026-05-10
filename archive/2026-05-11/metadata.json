@@ -1,0 +1,63 @@
+{
+  "date": "2026-05-11",
+  "trends_total": 67,
+  "primary_total": 440,
+  "secondary_total": 153,
+  "momentum_total": 17,
+  "strong": 1,
+  "notable": 6,
+  "watch": 9,
+  "theme_distribution": {
+    "전력/그리드": 5,
+    "재생에너지/풍력": 2,
+    "[직접매칭]": 2,
+    "의료미용/톡신": 2,
+    "바이오/제약": 2,
+    "사이버보안": 1,
+    "K-콘텐츠/엔터": 1,
+    "방산": 1,
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 77.0,
+      "classification": "🔴 강력주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "score": 69.9,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 68.9,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 64.8,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 63.1,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "naver": 22,
+    "google": 20
+  }
+}
