@@ -1,0 +1,64 @@
+{
+  "date": "2026-05-14",
+  "trends_total": 70,
+  "primary_total": 501,
+  "secondary_total": 156,
+  "momentum_total": 31,
+  "strong": 1,
+  "notable": 15,
+  "watch": 15,
+  "theme_distribution": {
+    "[직접매칭]": 7,
+    "2차전지/배터리": 5,
+    "바이오/제약": 4,
+    "전력/그리드": 4,
+    "로보틱스": 3,
+    "AI/반도체": 3,
+    "의료미용/톡신": 2,
+    "데이터센터/AI인프라": 1,
+    "사이버보안": 1,
+    "K-콘텐츠/엔터": 1
+  },
+  "top_picks": [
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 80.0,
+      "classification": "🔴 강력주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "005380",
+      "name": "현대차",
+      "score": 68.1,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "145020",
+      "name": "휴젤",
+      "score": 67.9,
+      "classification": "🟡 주목",
+      "theme": "의료미용/톡신"
+    },
+    {
+      "code": "254490",
+      "name": "미래반도체",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 65.6,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "naver": 25,
+    "web": 25,
+    "google": 20
+  }
+}
