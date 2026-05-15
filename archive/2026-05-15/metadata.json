@@ -1,0 +1,65 @@
+{
+  "date": "2026-05-15",
+  "trends_total": 70,
+  "primary_total": 502,
+  "secondary_total": 164,
+  "momentum_total": 24,
+  "strong": 1,
+  "notable": 13,
+  "watch": 10,
+  "theme_distribution": {
+    "2차전지/배터리": 4,
+    "바이오/제약": 4,
+    "로보틱스": 3,
+    "의료미용/톡신": 2,
+    "[직접매칭]": 2,
+    "데이터센터/AI인프라": 2,
+    "사이버보안": 2,
+    "전력/그리드": 2,
+    "AI/반도체": 1,
+    "방산": 1,
+    "K-콘텐츠/엔터": 1
+  },
+  "top_picks": [
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 84.6,
+      "classification": "🔴 강력주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "005380",
+      "name": "현대차",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "108490",
+      "name": "로보스타",
+      "score": 66.8,
+      "classification": "🟡 주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "005490",
+      "name": "POSCO홀딩스",
+      "score": 66.4,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "145020",
+      "name": "휴젤",
+      "score": 64.1,
+      "classification": "🟡 주목",
+      "theme": "의료미용/톡신"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "naver": 25,
+    "google": 20
+  }
+}
