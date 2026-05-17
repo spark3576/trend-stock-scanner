@@ -1,0 +1,67 @@
+{
+  "date": "2026-05-17",
+  "trends_total": 66,
+  "primary_total": 521,
+  "secondary_total": 174,
+  "momentum_total": 25,
+  "strong": 1,
+  "notable": 7,
+  "watch": 15,
+  "theme_distribution": {
+    "2차전지/배터리": 4,
+    "로보틱스": 3,
+    "[직접매칭]": 3,
+    "바이오/제약": 3,
+    "의료미용/톡신": 2,
+    "AI/반도체": 2,
+    "데이터센터/AI인프라": 2,
+    "조선/해운": 1,
+    "재생에너지/풍력": 1,
+    "방산": 1,
+    "사이버보안": 1,
+    "전력/그리드": 1,
+    "원전/SMR": 1
+  },
+  "top_picks": [
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 78.9,
+      "classification": "🔴 강력주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "005380",
+      "name": "현대차",
+      "score": 70.9,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "145020",
+      "name": "휴젤",
+      "score": 65.3,
+      "classification": "🟡 주목",
+      "theme": "의료미용/톡신"
+    },
+    {
+      "code": "005490",
+      "name": "POSCO홀딩스",
+      "score": 65.0,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "010140",
+      "name": "삼성중공업",
+      "score": 64.2,
+      "classification": "🟡 주목",
+      "theme": "조선/해운"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "naver": 21,
+    "google": 20
+  }
+}
