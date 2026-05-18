@@ -1,32 +1,30 @@
 {
   "date": "2026-05-18",
-  "trends_total": 70,
-  "primary_total": 504,
-  "secondary_total": 166,
-  "momentum_total": 27,
+  "trends_total": 61,
+  "primary_total": 521,
+  "secondary_total": 174,
+  "momentum_total": 22,
   "strong": 2,
-  "notable": 9,
-  "watch": 14,
+  "notable": 7,
+  "watch": 11,
   "theme_distribution": {
     "2차전지/배터리": 4,
+    "[직접매칭]": 4,
     "로보틱스": 3,
-    "[직접매칭]": 3,
-    "바이오/제약": 3,
     "데이터센터/AI인프라": 2,
     "의료미용/톡신": 2,
     "AI/반도체": 2,
-    "사이버보안": 2,
-    "우주/위성": 2,
     "재생에너지/풍력": 1,
     "방산": 1,
-    "원전/SMR": 1,
-    "전력/그리드": 1
+    "사이버보안": 1,
+    "전력/그리드": 1,
+    "원전/SMR": 1
   },
   "top_picks": [
     {
       "code": "454910",
       "name": "두산로보틱스",
-      "score": 78.2,
+      "score": 79.4,
       "classification": "🔴 강력주목",
       "theme": "로보틱스"
     },
@@ -40,28 +38,28 @@
     {
       "code": "005490",
       "name": "POSCO홀딩스",
-      "score": 71.2,
+      "score": 70.0,
       "classification": "🟡 주목",
       "theme": "2차전지/배터리"
     },
     {
       "code": "247540",
       "name": "에코프로비엠",
-      "score": 67.7,
+      "score": 66.5,
       "classification": "🟡 주목",
       "theme": "2차전지/배터리"
     },
     {
-      "code": "003670",
-      "name": "포스코퓨처엠",
-      "score": 65.3,
+      "code": "024070",
+      "name": "WISCOM",
+      "score": 63.8,
       "classification": "🟡 주목",
-      "theme": "2차전지/배터리"
+      "theme": "[직접매칭]"
     }
   ],
   "trend_sources": {
-    "naver": 25,
     "web": 25,
-    "google": 20
+    "google": 20,
+    "naver": 16
   }
 }
