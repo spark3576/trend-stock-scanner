@@ -1,0 +1,62 @@
+{
+  "date": "2026-05-19",
+  "trends_total": 55,
+  "primary_total": 523,
+  "secondary_total": 162,
+  "momentum_total": 17,
+  "strong": 3,
+  "notable": 8,
+  "watch": 4,
+  "theme_distribution": {
+    "2차전지/배터리": 4,
+    "로보틱스": 3,
+    "[직접매칭]": 3,
+    "데이터센터/AI인프라": 2,
+    "AI/반도체": 2,
+    "재생에너지/풍력": 1,
+    "전력/그리드": 1,
+    "원전/SMR": 1
+  },
+  "top_picks": [
+    {
+      "code": "005380",
+      "name": "현대차",
+      "score": 87.6,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 83.1,
+      "classification": "🔴 강력주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "247540",
+      "name": "에코프로비엠",
+      "score": 77.1,
+      "classification": "🔴 강력주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "003670",
+      "name": "포스코퓨처엠",
+      "score": 73.3,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "086520",
+      "name": "에코프로",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 10
+  }
+}
