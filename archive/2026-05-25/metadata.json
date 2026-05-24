@@ -1,0 +1,60 @@
+{
+  "date": "2026-05-25",
+  "trends_total": 52,
+  "primary_total": 445,
+  "secondary_total": 123,
+  "momentum_total": 18,
+  "strong": 0,
+  "notable": 8,
+  "watch": 10,
+  "theme_distribution": {
+    "AI/반도체": 5,
+    "K-콘텐츠/엔터": 4,
+    "2차전지/배터리": 3,
+    "[직접매칭]": 3,
+    "로보틱스": 2,
+    "전력/그리드": 1
+  },
+  "top_picks": [
+    {
+      "code": "005380",
+      "name": "현대차",
+      "score": 69.3,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "000270",
+      "name": "기아",
+      "score": 69.3,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "035760",
+      "name": "CJ ENM",
+      "score": 63.1,
+      "classification": "🟡 주목",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "034730",
+      "name": "SK",
+      "score": 62.9,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 62.0,
+      "classification": "🟡 주목",
+      "theme": "로보틱스"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 7
+  }
+}
