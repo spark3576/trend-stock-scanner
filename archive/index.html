@@ -168,11 +168,11 @@
       
       <div style="background:white; border:1px solid var(--border); border-radius:10px; padding:14px; border-left:4px solid #1f4e78;">
         <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px;">📊 2차 통과</div>
-        <div style="font-size:22px; font-weight:700; color:#1f4e78; margin-top:4px;">131.8</div>
+        <div style="font-size:22px; font-weight:700; color:#1f4e78; margin-top:4px;">129.5</div>
         <div style="font-size:12px; color:var(--muted); margin-top:2px;">
           이전 171.0 →
           <span style="color:#ef4444; font-weight:600;">
-            -39.2 (-23%)
+            -41.5 (-24%)
           </span>
         </div>
       </div>
@@ -231,11 +231,11 @@
         </div>
         <div class="entry-mini">
           <span class="pill">트렌드 <span class="num">52</span></span>
-          <span class="pill">1차 <span class="num">445</span></span>
-          <span class="pill">2차 <span class="num">123</span></span>
+          <span class="pill">1차 <span class="num">423</span></span>
+          <span class="pill">2차 <span class="num">114</span></span>
           <span class="pill strong">🔴 <span class="num">0</span></span>
-          <span class="pill notable">🟡 <span class="num">8</span></span>
-          <span class="pill">⚪ <span class="num">10</span></span>
+          <span class="pill notable">🟡 <span class="num">7</span></span>
+          <span class="pill">⚪ <span class="num">9</span></span>
         </div>
         <div class="entry-actions">
           <a href="./2026-05-25/dashboard.html" class="btn-primary">📊 대시보드</a>
@@ -788,7 +788,7 @@
   </div>
 
   <div class="footer">
-    Last updated: 2026-05-25 07:02 KST ·
+    Last updated: 2026-05-25 17:08 KST ·
     <a href="https://github.com/spark3576/trend-stock-scanner" target="_blank">View on GitHub</a><br>
     <small>본 결과물은 정보 제공 목적이며 투자 권유가 아닙니다.</small>
   </div>
@@ -820,8 +820,8 @@ function initIndexCharts() {
       labels: labels,
       datasets: [
         {label:'🔴 강력주목', data:[5, 5, 0, 0, 0, 0, 0, 3, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 2, 3, 1, 1, 0, 0], borderColor:STRONG,  backgroundColor:STRONG+'88',  fill:true, tension:0.3},
-        {label:'🟡 주목',     data:[1, 2, 8, 5, 6, 5, 8, 13, 14, 4, 3, 2, 4, 6, 7, 19, 15, 13, 9, 7, 7, 8, 6, 3, 5, 8], borderColor:NOTABLE, backgroundColor:NOTABLE+'88', fill:true, tension:0.3},
-        {label:'⚪ 관찰',     data:[3, 3, 2, 2, 6, 7, 3, 3, 3, 1, 2, 8, 8, 7, 11, 13, 15, 10, 13, 15, 11, 4, 7, 5, 4, 10], borderColor:WATCH,   backgroundColor:WATCH+'88',   fill:true, tension:0.3},
+        {label:'🟡 주목',     data:[1, 2, 8, 5, 6, 5, 8, 13, 14, 4, 3, 2, 4, 6, 7, 19, 15, 13, 9, 7, 7, 8, 6, 3, 5, 7], borderColor:NOTABLE, backgroundColor:NOTABLE+'88', fill:true, tension:0.3},
+        {label:'⚪ 관찰',     data:[3, 3, 2, 2, 6, 7, 3, 3, 3, 1, 2, 8, 8, 7, 11, 13, 15, 10, 13, 15, 11, 4, 7, 5, 4, 9], borderColor:WATCH,   backgroundColor:WATCH+'88',   fill:true, tension:0.3},
       ]
     },
     options: {
@@ -837,8 +837,8 @@ function initIndexCharts() {
     data: {
       labels: labels,
       datasets: [
-        {label:'1차 통과', data:[202, 239, 318, 321, 368, 368, 368, 414, 424, 449, 440, 447, 447, 447, 458, 509, 501, 502, 521, 521, 521, 523, 497, 476, 423, 445], borderColor:PRIMARY, backgroundColor:'transparent', tension:0.3, borderWidth:2},
-        {label:'2차 통과', data:[90, 129, 158, 153, 159, 159, 159, 175, 165, 171, 165, 151, 151, 151, 159, 167, 156, 164, 174, 174, 174, 162, 148, 142, 114, 123], borderColor:STRONG,  backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'1차 통과', data:[202, 239, 318, 321, 368, 368, 368, 414, 424, 449, 440, 447, 447, 447, 458, 509, 501, 502, 521, 521, 521, 523, 497, 476, 423, 423], borderColor:PRIMARY, backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'2차 통과', data:[90, 129, 158, 153, 159, 159, 159, 175, 165, 171, 165, 151, 151, 151, 159, 167, 156, 164, 174, 174, 174, 162, 148, 142, 114, 114], borderColor:STRONG,  backgroundColor:'transparent', tension:0.3, borderWidth:2},
       ]
     },
     options: {
@@ -855,13 +855,13 @@ function initIndexCharts() {
       labels: labels,
       datasets: [
         
-        {label:'[직접매칭]', data:[0, 1, 3, 2, 2, 2, 2, 3, 1, 1, 2, 2, 2, 2, 3, 7, 7, 2, 4, 3, 4, 3, 5, 2, 2, 3], borderColor:PALETTE[0], backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'[직접매칭]', data:[0, 1, 3, 2, 2, 2, 2, 3, 1, 1, 2, 2, 2, 2, 3, 7, 7, 2, 4, 3, 4, 3, 5, 2, 2, 2], borderColor:PALETTE[0], backgroundColor:'transparent', tension:0.3, borderWidth:2},
         
         {label:'2차전지/배터리', data:[2, 1, 3, 0, 2, 2, 2, 4, 3, 0, 0, 0, 2, 2, 3, 5, 5, 4, 4, 4, 4, 4, 0, 0, 0, 3], borderColor:PALETTE[1], backgroundColor:'transparent', tension:0.3, borderWidth:2},
         
         {label:'전력/그리드', data:[1, 2, 3, 4, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 5, 4, 2, 1, 1, 1, 1, 1, 0, 1, 1], borderColor:PALETTE[2], backgroundColor:'transparent', tension:0.3, borderWidth:2},
         
-        {label:'AI/반도체', data:[1, 1, 1, 1, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 3, 4, 3, 1, 2, 2, 2, 2, 2, 0, 4, 5], borderColor:PALETTE[3], backgroundColor:'transparent', tension:0.3, borderWidth:2},
+        {label:'AI/반도체', data:[1, 1, 1, 1, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 3, 4, 3, 1, 2, 2, 2, 2, 2, 0, 4, 4], borderColor:PALETTE[3], backgroundColor:'transparent', tension:0.3, borderWidth:2},
         
         {label:'로보틱스', data:[0, 0, 0, 0, 1, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2], borderColor:PALETTE[4], backgroundColor:'transparent', tension:0.3, borderWidth:2},
         
