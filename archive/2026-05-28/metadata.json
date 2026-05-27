@@ -1,0 +1,58 @@
+{
+  "date": "2026-05-28",
+  "trends_total": 51,
+  "primary_total": 310,
+  "secondary_total": 88,
+  "momentum_total": 9,
+  "strong": 0,
+  "notable": 2,
+  "watch": 7,
+  "theme_distribution": {
+    "K-콘텐츠/엔터": 3,
+    "우주/위성": 2,
+    "로보틱스": 2,
+    "[직접매칭]": 2
+  },
+  "top_picks": [
+    {
+      "code": "455900",
+      "name": "쎄트렉아이",
+      "score": 61.1,
+      "classification": "🟡 주목",
+      "theme": "우주/위성"
+    },
+    {
+      "code": "035760",
+      "name": "CJ ENM",
+      "score": 60.5,
+      "classification": "🟡 주목",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "035900",
+      "name": "JYP Ent.",
+      "score": 58.6,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 57.0,
+      "classification": "⚪ 관찰",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "056190",
+      "name": "에스에프에이",
+      "score": 57.0,
+      "classification": "⚪ 관찰",
+      "theme": "로보틱스"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 6
+  }
+}
