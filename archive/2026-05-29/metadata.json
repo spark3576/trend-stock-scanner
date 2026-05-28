@@ -1,0 +1,62 @@
+{
+  "date": "2026-05-29",
+  "trends_total": 54,
+  "primary_total": 287,
+  "secondary_total": 81,
+  "momentum_total": 15,
+  "strong": 0,
+  "notable": 4,
+  "watch": 10,
+  "theme_distribution": {
+    "바이오/제약": 4,
+    "로보틱스": 2,
+    "우주/위성": 2,
+    "AI/반도체": 2,
+    "사이버보안": 2,
+    "K-콘텐츠/엔터": 1,
+    "[직접매칭]": 1,
+    "원전/SMR": 1
+  },
+  "top_picks": [
+    {
+      "code": "056190",
+      "name": "에스에프에이",
+      "score": 69.2,
+      "classification": "🟡 주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 69.2,
+      "classification": "🟡 주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "302440",
+      "name": "SK바이오사이언스",
+      "score": 61.4,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 60.1,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "455900",
+      "name": "쎄트렉아이",
+      "score": 57.9,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 9
+  }
+}
