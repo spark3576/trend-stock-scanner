@@ -1,0 +1,61 @@
+{
+  "date": "2026-05-31",
+  "trends_total": 59,
+  "primary_total": 254,
+  "secondary_total": 72,
+  "momentum_total": 10,
+  "strong": 0,
+  "notable": 1,
+  "watch": 6,
+  "theme_distribution": {
+    "[직접매칭]": 3,
+    "AI/반도체": 2,
+    "원전/SMR": 1,
+    "우주/위성": 1,
+    "K-콘텐츠/엔터": 1,
+    "전력/그리드": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "003550",
+      "name": "LG",
+      "score": 61.4,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "036010",
+      "name": "아비코전자",
+      "score": 57.2,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 54.6,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "042700",
+      "name": "한미반도체",
+      "score": 50.9,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "189300",
+      "name": "인텔리안테크",
+      "score": 49.2,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 14
+  }
+}
