@@ -1,34 +1,43 @@
 {
   "date": "2026-06-01",
   "trends_total": 63,
-  "primary_total": 235,
-  "secondary_total": 67,
-  "momentum_total": 8,
+  "primary_total": 254,
+  "secondary_total": 72,
+  "momentum_total": 11,
   "strong": 0,
   "notable": 0,
-  "watch": 6,
+  "watch": 7,
   "theme_distribution": {
     "[직접매칭]": 2,
     "AI/반도체": 2,
+    "2차전지/배터리": 2,
     "원전/SMR": 1,
+    "K-콘텐츠/엔터": 1,
     "우주/위성": 1,
     "전력/그리드": 1,
-    "2차전지/배터리": 1
+    "사이버보안": 1
   },
   "top_picks": [
     {
       "code": "036010",
       "name": "아비코전자",
-      "score": 58.4,
+      "score": 57.9,
       "classification": "⚪ 관찰",
       "theme": "원전/SMR"
     },
     {
       "code": "006260",
       "name": "LS",
-      "score": 52.8,
+      "score": 55.4,
       "classification": "⚪ 관찰",
       "theme": "[직접매칭]"
+    },
+    {
+      "code": "041510",
+      "name": "에스엠",
+      "score": 51.3,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
     },
     {
       "code": "187870",
@@ -40,16 +49,9 @@
     {
       "code": "039030",
       "name": "이오테크닉스",
-      "score": 49.9,
+      "score": 50.2,
       "classification": "⚪ 관찰",
       "theme": "AI/반도체"
-    },
-    {
-      "code": "189300",
-      "name": "인텔리안테크",
-      "score": 48.5,
-      "classification": "⚪ 관찰",
-      "theme": "우주/위성"
     }
   ],
   "trend_sources": {
