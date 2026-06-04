@@ -1,0 +1,62 @@
+{
+  "date": "2026-06-04",
+  "trends_total": 63,
+  "primary_total": 240,
+  "secondary_total": 57,
+  "momentum_total": 14,
+  "strong": 0,
+  "notable": 4,
+  "watch": 8,
+  "theme_distribution": {
+    "바이오/제약": 4,
+    "[직접매칭]": 3,
+    "2차전지/배터리": 2,
+    "원전/SMR": 1,
+    "재생에너지/풍력": 1,
+    "AI/반도체": 1,
+    "로보틱스": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 72.2,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "036010",
+      "name": "아비코전자",
+      "score": 62.6,
+      "classification": "🟡 주목",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "302440",
+      "name": "SK바이오사이언스",
+      "score": 61.5,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "000100",
+      "name": "유한양행",
+      "score": 60.5,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "247540",
+      "name": "에코프로비엠",
+      "score": 58.7,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 18
+  }
+}
