@@ -1,0 +1,58 @@
+{
+  "date": "2026-06-07",
+  "trends_total": 57,
+  "primary_total": 240,
+  "secondary_total": 56,
+  "momentum_total": 9,
+  "strong": 0,
+  "notable": 5,
+  "watch": 4,
+  "theme_distribution": {
+    "AI/반도체": 4,
+    "[직접매칭]": 2,
+    "로보틱스": 2,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "000150",
+      "name": "두산",
+      "score": 65.3,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 64.4,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "454910",
+      "name": "두산로보틱스",
+      "score": 63.6,
+      "classification": "🟡 주목",
+      "theme": "로보틱스"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 63.4,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "score": 60.7,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 12
+  }
+}
