@@ -1,0 +1,59 @@
+{
+  "date": "2026-06-09",
+  "trends_total": 51,
+  "primary_total": 219,
+  "secondary_total": 49,
+  "momentum_total": 10,
+  "strong": 1,
+  "notable": 5,
+  "watch": 4,
+  "theme_distribution": {
+    "바이오/제약": 3,
+    "AI/반도체": 3,
+    "[직접매칭]": 2,
+    "로보틱스": 1,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 83.8,
+      "classification": "🔴 강력주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 72.1,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "000100",
+      "name": "유한양행",
+      "score": 71.3,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "302440",
+      "name": "SK바이오사이언스",
+      "score": 68.6,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "score": 66.9,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 6
+  }
+}
