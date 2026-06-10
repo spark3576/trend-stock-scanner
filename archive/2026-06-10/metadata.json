@@ -1,0 +1,58 @@
+{
+  "date": "2026-06-10",
+  "trends_total": 52,
+  "primary_total": 177,
+  "secondary_total": 51,
+  "momentum_total": 7,
+  "strong": 0,
+  "notable": 4,
+  "watch": 3,
+  "theme_distribution": {
+    "AI/반도체": 4,
+    "[직접매칭]": 1,
+    "원전/SMR": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 73.1,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "score": 68.3,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "005930",
+      "name": "삼성전자",
+      "score": 66.6,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "000660",
+      "name": "SK하이닉스",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "036570",
+      "name": "NC",
+      "score": 57.2,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 7
+  }
+}
