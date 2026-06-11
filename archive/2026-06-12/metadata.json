@@ -1,0 +1,58 @@
+{
+  "date": "2026-06-12",
+  "trends_total": 58,
+  "primary_total": 177,
+  "secondary_total": 50,
+  "momentum_total": 6,
+  "strong": 0,
+  "notable": 0,
+  "watch": 6,
+  "theme_distribution": {
+    "AI/반도체": 2,
+    "K-콘텐츠/엔터": 2,
+    "[직접매칭]": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 58.2,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "score": 55.1,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "036570",
+      "name": "NC",
+      "score": 55.1,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "041510",
+      "name": "에스엠",
+      "score": 53.3,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "253450",
+      "name": "스튜디오드래곤",
+      "score": 51.2,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 13
+  }
+}
