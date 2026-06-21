@@ -1,0 +1,57 @@
+{
+  "date": "2026-06-22",
+  "trends_total": 59,
+  "primary_total": 115,
+  "secondary_total": 42,
+  "momentum_total": 6,
+  "strong": 1,
+  "notable": 3,
+  "watch": 0,
+  "theme_distribution": {
+    "AI/반도체": 4,
+    "사이버보안": 1,
+    "조선/해운": 1
+  },
+  "top_picks": [
+    {
+      "code": "403870",
+      "name": "HPSP",
+      "score": 78.0,
+      "classification": "🔴 강력주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "357780",
+      "name": "솔브레인",
+      "score": 72.0,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "095660",
+      "name": "네오위즈",
+      "score": 41.4,
+      "classification": "—",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 14
+  }
+}
