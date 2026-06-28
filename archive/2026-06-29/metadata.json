@@ -1,0 +1,27 @@
+{
+  "date": "2026-06-29",
+  "trends_total": 56,
+  "primary_total": 81,
+  "secondary_total": 34,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "403870",
+      "name": "HPSP",
+      "score": 50.6,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 11
+  }
+}
