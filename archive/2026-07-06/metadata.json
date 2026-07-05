@@ -1,0 +1,49 @@
+{
+  "date": "2026-07-06",
+  "trends_total": 58,
+  "primary_total": 79,
+  "secondary_total": 37,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 2,
+  "watch": 1,
+  "theme_distribution": {
+    "AI/반도체": 3,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 66.2,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "039030",
+      "name": "이오테크닉스",
+      "score": 60.9,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 57.9,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "095660",
+      "name": "네오위즈",
+      "score": 43.3,
+      "classification": "—",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 13
+  }
+}
