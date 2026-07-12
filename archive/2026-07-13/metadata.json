@@ -1,0 +1,35 @@
+{
+  "date": "2026-07-13",
+  "trends_total": 56,
+  "primary_total": 95,
+  "secondary_total": 44,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 1,
+  "watch": 1,
+  "theme_distribution": {
+    "[직접매칭]": 1,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "255220",
+      "name": "SG",
+      "score": 60.0,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 51.5,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 11
+  }
+}
