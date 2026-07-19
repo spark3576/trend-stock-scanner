@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-20",
+  "trends_total": 51,
+  "primary_total": 89,
+  "secondary_total": 34,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "로보틱스": 1
+  },
+  "top_picks": [
+    {
+      "code": "298690",
+      "name": "에어부산",
+      "score": 59.3,
+      "classification": "⚪ 관찰",
+      "theme": "로보틱스"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 6
+  }
+}
