@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-22",
+  "trends_total": 50,
+  "primary_total": 69,
+  "secondary_total": 26,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "[직접매칭]": 1
+  },
+  "top_picks": [
+    {
+      "code": "078930",
+      "name": "GS",
+      "score": 50.7,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 5
+  }
+}
