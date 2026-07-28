@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📈 Trend Stock Scanner — 2026-07-29</title>
+<style>
+  :root {
+    --primary: #1f4e78;
+    --strong: #d62828;
+    --notable: #f4a261;
+    --watch: #6c757d;
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --border: #e5eaf0;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 24px; background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "맑은 고딕", sans-serif;
+    color: var(--text); line-height: 1.55;
+  }
+  header { max-width: 1200px; margin: 0 auto 24px; }
+  h1 { font-size: 28px; margin: 0 0 4px; color: var(--primary); }
+  .meta { color: var(--text-muted); font-size: 14px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px;
+  }
+  .card .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+  .card .value { font-size: 26px; font-weight: 700; margin-top: 4px; color: var(--primary); }
+  .card.strong .value { color: var(--strong); }
+  .card.notable .value { color: var(--notable); }
+  .card.watch .value { color: var(--watch); }
+
+  section { margin-bottom: 32px; }
+  h2 { font-size: 20px; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+
+  .momentum-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;
+  }
+  .momentum-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-left: 5px solid var(--watch);
+    border-radius: 8px; padding: 16px;
+  }
+  .momentum-card.strong { border-left-color: var(--strong); }
+  .momentum-card.notable { border-left-color: var(--notable); }
+  .momentum-card .header-row {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;
+  }
+  .momentum-card .stock-name { font-size: 17px; font-weight: 700; }
+  .momentum-card .stock-code { color: var(--text-muted); font-size: 13px; }
+  .momentum-card .score-badge {
+    background: var(--primary); color: white; padding: 2px 10px; border-radius: 12px;
+    font-size: 13px; font-weight: 600;
+  }
+  .momentum-card.strong .score-badge { background: var(--strong); }
+  .momentum-card.notable .score-badge { background: var(--notable); }
+  .momentum-card .theme-tag {
+    display: inline-block; background: #eaf2f8; color: var(--primary);
+    padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-bottom: 8px;
+  }
+  .momentum-card .signals {
+    display: flex; gap: 12px; font-size: 13px; color: var(--text-muted); margin-bottom: 8px;
+  }
+  .momentum-card .rationale {
+    font-size: 13px; color: var(--text); background: #f8fafc; padding: 10px;
+    border-radius: 6px; border-left: 2px solid var(--border);
+  }
+  .momentum-card .keywords { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; }
+  thead th {
+    background: var(--primary); color: white; padding: 10px 12px; text-align: left;
+    font-size: 13px; font-weight: 600;
+  }
+  tbody td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tbody tr:hover { background: #f8fafc; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .download-btn {
+    display: inline-block; background: var(--primary); color: white;
+    padding: 10px 18px; border-radius: 6px; text-decoration: none;
+    font-size: 14px; font-weight: 500;
+  }
+  .download-btn:hover { background: #163d5e; }
+
+  .disclaimer {
+    margin-top: 36px; padding: 14px; background: #fff8e1; border-left: 4px solid #fbc02d;
+    border-radius: 6px; font-size: 13px; color: #5d4037;
+  }
+
+  .empty { text-align: center; padding: 40px; color: var(--text-muted); font-style: italic; }
+
+  /* Home button */
+  .home-bar {
+    max-width: 1200px; margin: 0 auto 16px;
+  }
+  .home-bar a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 6px; text-decoration: none; color: var(--primary);
+    font-size: 13px; font-weight: 500;
+    transition: background .15s;
+  }
+  .home-bar a:hover { background: var(--primary); color: white; }
+
+  /* Bottom navigation */
+  .nav-footer {
+    max-width: 1200px; margin: 30px auto 0;
+    display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .nav-footer a {
+    padding: 10px 18px; border-radius: 8px;
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    border: 1px solid var(--border);
+  }
+  .nav-footer .nav-home { background: var(--primary); color: white; border-color: var(--primary); }
+  .nav-footer .nav-home:hover { background: #163d5e; }
+  .nav-footer .nav-other { background: var(--card-bg); color: var(--primary); }
+  .nav-footer .nav-other:hover { background: #eef2f7; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="home-bar">
+  <a href="../index.html">← 아카이브 홈</a>
+</div>
+
+<header>
+  <h1>📈 Trend Stock Scanner</h1>
+  <div class="meta">트리거 일자: <strong>2026-07-29</strong> · 생성 시각: 2026-07-29 07:33 KST · <a href="./dashboard.html" class="download-btn" style="padding: 4px 10px; font-size: 12px; margin-left: 8px;">📊 대시보드</a> <a href="./report.xlsx" class="download-btn" style="padding: 4px 10px; font-size: 12px; margin-left: 4px;">📥 Excel</a></div>
+</header>
+
+<div class="container">
+
+  <section>
+    <div class="summary-grid">
+      <div class="card"><div class="label">트렌드 키워드</div><div class="value">61</div></div>
+      <div class="card"><div class="label">1차 통과 (지속상승)</div><div class="value">105</div></div>
+      <div class="card"><div class="label">2차 통과 (2배급증)</div><div class="value">50</div></div>
+      <div class="card strong"><div class="label">🔴 강력주목</div><div class="value">0</div></div>
+      <div class="card notable"><div class="label">🟡 주목</div><div class="value">1</div></div>
+      <div class="card watch"><div class="label">⚪ 관찰</div><div class="value">0</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎯 모멘텀 종합 분석 (트렌드 × 거래량)</h2>
+    
+      <div class="momentum-grid">
+      
+        <div class="momentum-card notable">
+          <div class="header-row">
+            <div>
+              <div class="stock-name">위닉스 <span class="stock-code">(044340 · KOSDAQ)</span></div>
+            </div>
+            <div class="score-badge">🟡 주목 · 66.9</div>
+          </div>
+          <div class="theme-tag">#데이터센터/AI인프라</div>
+          <div class="signals">
+            <span>📊 거래량 96.6</span>
+            <span>🔥 트렌드 52.5</span>
+            <span>🧩 밀집도 25</span>
+          </div>
+          <div class="rationale">[테마: 데이터센터/AI인프라] 거래량 시그널 97점 (2주avg/4-8주avg = 150.10, 2주/2-4주 = 3.83). 트렌드 시그널 52점 — 매칭 키워드: 액침냉각(naver, 57점), data center(naver, 48점). 동일 테마 동시통과 1종목(밀집도 25점). 종목 근거: 쿨링</div>
+          <div class="keywords">매칭 키워드: 액침냉각, data center</div>
+        </div>
+      
+      </div>
+    
+  </section>
+
+  <section>
+    <h2>📊 2차 스크리닝 통과 종목 (2주avg ÷ 2~4주avg ≥ 2배)</h2>
+    
+      <table>
+        <thead>
+          <tr><th>코드</th><th>종목명</th><th>시장</th><th class="num">종가</th>
+          <th class="num">vol_4-8w</th><th class="num">vol_2-4w</th><th class="num">vol_2w</th>
+          <th class="num">2w/4-8w</th><th class="num">2w/2-4w</th></tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td>066590</td><td>스모트로닉</td><td>KOSDAQ</td>
+            <td class="num">2,750</td>
+            <td class="num">104,232</td>
+            <td class="num">132,978</td>
+            <td class="num">6,538,400</td>
+            <td class="num">62.73</td>
+            <td class="num"><strong>49.17</strong></td>
+          </tr>
+        
+          <tr>
+            <td>218150</td><td>미래생명자원</td><td>KOSDAQ</td>
+            <td class="num">2,130</td>
+            <td class="num">166,190</td>
+            <td class="num">179,795</td>
+            <td class="num">8,048,603</td>
+            <td class="num">48.43</td>
+            <td class="num"><strong>44.77</strong></td>
+          </tr>
+        
+          <tr>
+            <td>012690</td><td>모나리자</td><td>KOSPI</td>
+            <td class="num">1,498</td>
+            <td class="num">96,962</td>
+            <td class="num">511,657</td>
+            <td class="num">15,164,609</td>
+            <td class="num">156.40</td>
+            <td class="num"><strong>29.64</strong></td>
+          </tr>
+        
+          <tr>
+            <td>002140</td><td>고려산업</td><td>KOSPI</td>
+            <td class="num">2,045</td>
+            <td class="num">88,281</td>
+            <td class="num">557,249</td>
+            <td class="num">8,482,666</td>
+            <td class="num">96.09</td>
+            <td class="num"><strong>15.22</strong></td>
+          </tr>
+        
+          <tr>
+            <td>004540</td><td>깨끗한나라</td><td>KOSPI</td>
+            <td class="num">1,217</td>
+            <td class="num">144,591</td>
+            <td class="num">145,000</td>
+            <td class="num">1,983,808</td>
+            <td class="num">13.72</td>
+            <td class="num"><strong>13.68</strong></td>
+          </tr>
+        
+          <tr>
+            <td>950160</td><td>코오롱티슈진</td><td>KOSDAQ</td>
+            <td class="num">15,910</td>
+            <td class="num">366,606</td>
+            <td class="num">441,177</td>
+            <td class="num">5,560,384</td>
+            <td class="num">15.17</td>
+            <td class="num"><strong>12.60</strong></td>
+          </tr>
+        
+          <tr>
+            <td>102940</td><td>코오롱생명과학</td><td>KOSDAQ</td>
+            <td class="num">17,180</td>
+            <td class="num">34,886</td>
+            <td class="num">40,572</td>
+            <td class="num">337,453</td>
+            <td class="num">9.67</td>
+            <td class="num"><strong>8.32</strong></td>
+          </tr>
+        
+          <tr>
+            <td>050090</td><td>비케이홀딩스</td><td>KOSDAQ</td>
+            <td class="num">385</td>
+            <td class="num">77,972</td>
+            <td class="num">122,629</td>
+            <td class="num">831,088</td>
+            <td class="num">10.66</td>
+            <td class="num"><strong>6.78</strong></td>
+          </tr>
+        
+          <tr>
+            <td>304840</td><td>피플바이오</td><td>KOSDAQ</td>
+            <td class="num">710</td>
+            <td class="num">92,863</td>
+            <td class="num">170,600</td>
+            <td class="num">1,061,766</td>
+            <td class="num">11.43</td>
+            <td class="num"><strong>6.22</strong></td>
+          </tr>
+        
+          <tr>
+            <td>069920</td><td>엑시온그룹</td><td>KOSDAQ</td>
+            <td class="num">1,235</td>
+            <td class="num">177,082</td>
+            <td class="num">262,279</td>
+            <td class="num">1,600,984</td>
+            <td class="num">9.04</td>
+            <td class="num"><strong>6.10</strong></td>
+          </tr>
+        
+          <tr>
+            <td>196300</td><td>HLB펩</td><td>KOSDAQ</td>
+            <td class="num">3,980</td>
+            <td class="num">11,658</td>
+            <td class="num">14,297</td>
+            <td class="num">85,893</td>
+            <td class="num">7.37</td>
+            <td class="num"><strong>6.01</strong></td>
+          </tr>
+        
+          <tr>
+            <td>011090</td><td>에넥스</td><td>KOSPI</td>
+            <td class="num">1,391</td>
+            <td class="num">56,469</td>
+            <td class="num">399,052</td>
+            <td class="num">2,261,084</td>
+            <td class="num">40.04</td>
+            <td class="num"><strong>5.67</strong></td>
+          </tr>
+        
+          <tr>
+            <td>065950</td><td>웰크론</td><td>KOSDAQ</td>
+            <td class="num">1,001</td>
+            <td class="num">71,384</td>
+            <td class="num">291,646</td>
+            <td class="num">1,638,496</td>
+            <td class="num">22.95</td>
+            <td class="num"><strong>5.62</strong></td>
+          </tr>
+        
+          <tr>
+            <td>317400</td><td>자이에스앤디</td><td>KOSPI</td>
+            <td class="num">7,050</td>
+            <td class="num">145,841</td>
+            <td class="num">375,247</td>
+            <td class="num">1,923,300</td>
+            <td class="num">13.19</td>
+            <td class="num"><strong>5.13</strong></td>
+          </tr>
+        
+          <tr>
+            <td>005860</td><td>한일사료</td><td>KOSDAQ</td>
+            <td class="num">2,370</td>
+            <td class="num">590,749</td>
+            <td class="num">1,627,713</td>
+            <td class="num">7,784,731</td>
+            <td class="num">13.18</td>
+            <td class="num"><strong>4.78</strong></td>
+          </tr>
+        
+          <tr>
+            <td>199730</td><td>바이오인프라</td><td>KOSDAQ</td>
+            <td class="num">2,035</td>
+            <td class="num">15,021</td>
+            <td class="num">29,831</td>
+            <td class="num">137,051</td>
+            <td class="num">9.12</td>
+            <td class="num"><strong>4.59</strong></td>
+          </tr>
+        
+          <tr>
+            <td>285800</td><td>진영</td><td>KOSDAQ</td>
+            <td class="num">798</td>
+            <td class="num">243,454</td>
+            <td class="num">632,054</td>
+            <td class="num">2,880,104</td>
+            <td class="num">11.83</td>
+            <td class="num"><strong>4.56</strong></td>
+          </tr>
+        
+          <tr>
+            <td>368600</td><td>아이씨에이치</td><td>KOSDAQ</td>
+            <td class="num">1,033</td>
+            <td class="num">151,194</td>
+            <td class="num">210,960</td>
+            <td class="num">866,199</td>
+            <td class="num">5.73</td>
+            <td class="num"><strong>4.11</strong></td>
+          </tr>
+        
+          <tr>
+            <td>046210</td><td>HLB파나진</td><td>KOSDAQ</td>
+            <td class="num">1,051</td>
+            <td class="num">86,536</td>
+            <td class="num">332,454</td>
+            <td class="num">1,344,109</td>
+            <td class="num">15.53</td>
+            <td class="num"><strong>4.04</strong></td>
+          </tr>
+        
+          <tr>
+            <td>047920</td><td>HLB제약</td><td>KOSDAQ</td>
+            <td class="num">8,620</td>
+            <td class="num">120,033</td>
+            <td class="num">211,691</td>
+            <td class="num">838,945</td>
+            <td class="num">6.99</td>
+            <td class="num"><strong>3.96</strong></td>
+          </tr>
+        
+          <tr>
+            <td>044340</td><td>위닉스</td><td>KOSDAQ</td>
+            <td class="num">5,400</td>
+            <td class="num">32,512</td>
+            <td class="num">1,273,361</td>
+            <td class="num">4,879,978</td>
+            <td class="num">150.10</td>
+            <td class="num"><strong>3.83</strong></td>
+          </tr>
+        
+          <tr>
+            <td>008290</td><td>원풍물산</td><td>KOSDAQ</td>
+            <td class="num">393</td>
+            <td class="num">65,686</td>
+            <td class="num">985,338</td>
+            <td class="num">3,722,477</td>
+            <td class="num">56.67</td>
+            <td class="num"><strong>3.78</strong></td>
+          </tr>
+        
+          <tr>
+            <td>065690</td><td>파커스</td><td>KOSDAQ</td>
+            <td class="num">1,420</td>
+            <td class="num">16,327</td>
+            <td class="num">35,855</td>
+            <td class="num">127,657</td>
+            <td class="num">7.82</td>
+            <td class="num"><strong>3.56</strong></td>
+          </tr>
+        
+          <tr>
+            <td>014990</td><td>인디에프</td><td>KOSPI</td>
+            <td class="num">1,863</td>
+            <td class="num">57,069</td>
+            <td class="num">58,400</td>
+            <td class="num">203,492</td>
+            <td class="num">3.57</td>
+            <td class="num"><strong>3.48</strong></td>
+          </tr>
+        
+          <tr>
+            <td>215090</td><td>솔디펜스</td><td>KOSDAQ</td>
+            <td class="num">1,371</td>
+            <td class="num">113,303</td>
+            <td class="num">147,248</td>
+            <td class="num">512,126</td>
+            <td class="num">4.52</td>
+            <td class="num"><strong>3.48</strong></td>
+          </tr>
+        
+          <tr>
+            <td>210980</td><td>SK디앤디</td><td>KOSPI</td>
+            <td class="num">5,660</td>
+            <td class="num">22,061</td>
+            <td class="num">75,949</td>
+            <td class="num">263,650</td>
+            <td class="num">11.95</td>
+            <td class="num"><strong>3.47</strong></td>
+          </tr>
+        
+          <tr>
+            <td>239340</td><td>이스트에이드</td><td>KOSDAQ</td>
+            <td class="num">649</td>
+            <td class="num">92,318</td>
+            <td class="num">93,934</td>
+            <td class="num">290,088</td>
+            <td class="num">3.14</td>
+            <td class="num"><strong>3.09</strong></td>
+          </tr>
+        
+          <tr>
+            <td>018700</td><td>졸스</td><td>KOSDAQ</td>
+            <td class="num">1,750</td>
+            <td class="num">79,529</td>
+            <td class="num">85,937</td>
+            <td class="num">258,564</td>
+            <td class="num">3.25</td>
+            <td class="num"><strong>3.01</strong></td>
+          </tr>
+        
+          <tr>
+            <td>187420</td><td>HLB제넥스</td><td>KOSDAQ</td>
+            <td class="num">1,612</td>
+            <td class="num">122,846</td>
+            <td class="num">205,852</td>
+            <td class="num">611,477</td>
+            <td class="num">4.98</td>
+            <td class="num"><strong>2.97</strong></td>
+          </tr>
+        
+          <tr>
+            <td>027710</td><td>팜스토리</td><td>KOSDAQ</td>
+            <td class="num">1,062</td>
+            <td class="num">503,867</td>
+            <td class="num">596,635</td>
+            <td class="num">1,761,244</td>
+            <td class="num">3.50</td>
+            <td class="num"><strong>2.95</strong></td>
+          </tr>
+        
+          <tr>
+            <td>138360</td><td>앤로보틱스</td><td>KOSDAQ</td>
+            <td class="num">1,974</td>
+            <td class="num">831,838</td>
+            <td class="num">915,128</td>
+            <td class="num">2,646,018</td>
+            <td class="num">3.18</td>
+            <td class="num"><strong>2.89</strong></td>
+          </tr>
+        
+          <tr>
+            <td>014970</td><td>삼륭물산</td><td>KOSDAQ</td>
+            <td class="num">4,215</td>
+            <td class="num">28,567</td>
+            <td class="num">180,117</td>
+            <td class="num">515,872</td>
+            <td class="num">18.06</td>
+            <td class="num"><strong>2.86</strong></td>
+          </tr>
+        
+          <tr>
+            <td>119850</td><td>지엔씨에너지</td><td>KOSDAQ</td>
+            <td class="num">37,400</td>
+            <td class="num">153,222</td>
+            <td class="num">453,858</td>
+            <td class="num">1,218,041</td>
+            <td class="num">7.95</td>
+            <td class="num"><strong>2.68</strong></td>
+          </tr>
+        
+          <tr>
+            <td>025870</td><td>신라에스지</td><td>KOSDAQ</td>
+            <td class="num">2,455</td>
+            <td class="num">30,243</td>
+            <td class="num">103,713</td>
+            <td class="num">267,103</td>
+            <td class="num">8.83</td>
+            <td class="num"><strong>2.58</strong></td>
+          </tr>
+        
+          <tr>
+            <td>900120</td><td>씨엑스아이</td><td>KOSDAQ</td>
+            <td class="num">1,168</td>
+            <td class="num">33,149</td>
+            <td class="num">33,784</td>
+            <td class="num">86,934</td>
+            <td class="num">2.62</td>
+            <td class="num"><strong>2.57</strong></td>
+          </tr>
+        
+          <tr>
+            <td>127710</td><td>아시아경제</td><td>KOSDAQ</td>
+            <td class="num">1,037</td>
+            <td class="num">23,988</td>
+            <td class="num">110,840</td>
+            <td class="num">278,222</td>
+            <td class="num">11.60</td>
+            <td class="num"><strong>2.51</strong></td>
+          </tr>
+        
+          <tr>
+            <td>006740</td><td>블루산업개발</td><td>KOSPI</td>
+            <td class="num">986</td>
+            <td class="num">23,120</td>
+            <td class="num">95,990</td>
+            <td class="num">236,728</td>
+            <td class="num">10.24</td>
+            <td class="num"><strong>2.47</strong></td>
+          </tr>
+        
+          <tr>
+            <td>015260</td><td>에이엔피</td><td>KOSPI</td>
+            <td class="num">418</td>
+            <td class="num">606,994</td>
+            <td class="num">1,290,774</td>
+            <td class="num">3,181,145</td>
+            <td class="num">5.24</td>
+            <td class="num"><strong>2.46</strong></td>
+          </tr>
+        
+          <tr>
+            <td>084180</td><td>수성웹툰</td><td>KOSDAQ</td>
+            <td class="num">539</td>
+            <td class="num">330,718</td>
+            <td class="num">344,004</td>
+            <td class="num">840,086</td>
+            <td class="num">2.54</td>
+            <td class="num"><strong>2.44</strong></td>
+          </tr>
+        
+          <tr>
+            <td>030720</td><td>동원수산</td><td>KOSPI</td>
+            <td class="num">5,710</td>
+            <td class="num">26,926</td>
+            <td class="num">81,416</td>
+            <td class="num">198,759</td>
+            <td class="num">7.38</td>
+            <td class="num"><strong>2.44</strong></td>
+          </tr>
+        
+          <tr>
+            <td>004780</td><td>대륙제관</td><td>KOSDAQ</td>
+            <td class="num">4,200</td>
+            <td class="num">35,050</td>
+            <td class="num">44,228</td>
+            <td class="num">106,142</td>
+            <td class="num">3.03</td>
+            <td class="num"><strong>2.40</strong></td>
+          </tr>
+        
+          <tr>
+            <td>115450</td><td>HLB테라퓨틱스</td><td>KOSDAQ</td>
+            <td class="num">1,700</td>
+            <td class="num">382,785</td>
+            <td class="num">494,536</td>
+            <td class="num">1,180,939</td>
+            <td class="num">3.09</td>
+            <td class="num"><strong>2.39</strong></td>
+          </tr>
+        
+          <tr>
+            <td>376900</td><td>로킷헬스케어</td><td>KOSDAQ</td>
+            <td class="num">42,700</td>
+            <td class="num">209,525</td>
+            <td class="num">211,283</td>
+            <td class="num">493,240</td>
+            <td class="num">2.35</td>
+            <td class="num"><strong>2.33</strong></td>
+          </tr>
+        
+          <tr>
+            <td>007690</td><td>국도화학</td><td>KOSPI</td>
+            <td class="num">38,800</td>
+            <td class="num">18,695</td>
+            <td class="num">21,595</td>
+            <td class="num">50,050</td>
+            <td class="num">2.68</td>
+            <td class="num"><strong>2.32</strong></td>
+          </tr>
+        
+          <tr>
+            <td>006660</td><td>삼성공조</td><td>KOSPI</td>
+            <td class="num">12,210</td>
+            <td class="num">259,859</td>
+            <td class="num">1,336,965</td>
+            <td class="num">3,019,534</td>
+            <td class="num">11.62</td>
+            <td class="num"><strong>2.26</strong></td>
+          </tr>
+        
+          <tr>
+            <td>052460</td><td>아이크래프트</td><td>KOSDAQ</td>
+            <td class="num">4,420</td>
+            <td class="num">178,963</td>
+            <td class="num">310,961</td>
+            <td class="num">698,222</td>
+            <td class="num">3.90</td>
+            <td class="num"><strong>2.25</strong></td>
+          </tr>
+        
+          <tr>
+            <td>085670</td><td>뉴프렉스</td><td>KOSDAQ</td>
+            <td class="num">2,995</td>
+            <td class="num">193,982</td>
+            <td class="num">205,080</td>
+            <td class="num">452,447</td>
+            <td class="num">2.33</td>
+            <td class="num"><strong>2.21</strong></td>
+          </tr>
+        
+          <tr>
+            <td>054940</td><td>엑사이엔씨</td><td>KOSDAQ</td>
+            <td class="num">760</td>
+            <td class="num">304,441</td>
+            <td class="num">1,691,369</td>
+            <td class="num">3,684,188</td>
+            <td class="num">12.10</td>
+            <td class="num"><strong>2.18</strong></td>
+          </tr>
+        
+          <tr>
+            <td>006880</td><td>신송홀딩스</td><td>KOSPI</td>
+            <td class="num">4,755</td>
+            <td class="num">35,067</td>
+            <td class="num">44,956</td>
+            <td class="num">91,886</td>
+            <td class="num">2.62</td>
+            <td class="num"><strong>2.04</strong></td>
+          </tr>
+        
+          <tr>
+            <td>005360</td><td>모나미</td><td>KOSPI</td>
+            <td class="num">1,718</td>
+            <td class="num">65,533</td>
+            <td class="num">3,421,643</td>
+            <td class="num">6,916,456</td>
+            <td class="num">105.54</td>
+            <td class="num"><strong>2.02</strong></td>
+          </tr>
+        
+        </tbody>
+      </table>
+    
+  </section>
+
+  <section>
+    <h2>📈 1차 스크리닝 통과 종목 (거래량 지속 상승)</h2>
+    
+      <table>
+        <thead>
+          <tr><th>코드</th><th>종목명</th><th>시장</th><th class="num">종가</th>
+          <th class="num">vol_4-8w</th><th class="num">vol_2-4w</th><th class="num">vol_2w</th>
+          <th class="num">2w/4-8w</th></tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td>003680</td><td>한성기업</td><td>KOSPI</td>
+            <td class="num">7,050</td>
+            <td class="num">10,700</td>
+            <td class="num">2,729,346</td>
+            <td class="num">3,494,940</td>
+            <td class="num">326.61</td>
+          </tr>
+        
+          <tr>
+            <td>012690</td><td>모나리자</td><td>KOSPI</td>
+            <td class="num">1,498</td>
+            <td class="num">96,962</td>
+            <td class="num">511,657</td>
+            <td class="num">15,164,609</td>
+            <td class="num">156.40</td>
+          </tr>
+        
+          <tr>
+            <td>044340</td><td>위닉스</td><td>KOSDAQ</td>
+            <td class="num">5,400</td>
+            <td class="num">32,512</td>
+            <td class="num">1,273,361</td>
+            <td class="num">4,879,978</td>
+            <td class="num">150.10</td>
+          </tr>
+        
+          <tr>
+            <td>005360</td><td>모나미</td><td>KOSPI</td>
+            <td class="num">1,718</td>
+            <td class="num">65,533</td>
+            <td class="num">3,421,643</td>
+            <td class="num">6,916,456</td>
+            <td class="num">105.54</td>
+          </tr>
+        
+          <tr>
+            <td>002140</td><td>고려산업</td><td>KOSPI</td>
+            <td class="num">2,045</td>
+            <td class="num">88,281</td>
+            <td class="num">557,249</td>
+            <td class="num">8,482,666</td>
+            <td class="num">96.09</td>
+          </tr>
+        
+          <tr>
+            <td>066590</td><td>스모트로닉</td><td>KOSDAQ</td>
+            <td class="num">2,750</td>
+            <td class="num">104,232</td>
+            <td class="num">132,978</td>
+            <td class="num">6,538,400</td>
+            <td class="num">62.73</td>
+          </tr>
+        
+          <tr>
+            <td>008290</td><td>원풍물산</td><td>KOSDAQ</td>
+            <td class="num">393</td>
+            <td class="num">65,686</td>
+            <td class="num">985,338</td>
+            <td class="num">3,722,477</td>
+            <td class="num">56.67</td>
+          </tr>
+        
+          <tr>
+            <td>218150</td><td>미래생명자원</td><td>KOSDAQ</td>
+            <td class="num">2,130</td>
+            <td class="num">166,190</td>
+            <td class="num">179,795</td>
+            <td class="num">8,048,603</td>
+            <td class="num">48.43</td>
+          </tr>
+        
+          <tr>
+            <td>011090</td><td>에넥스</td><td>KOSPI</td>
+            <td class="num">1,391</td>
+            <td class="num">56,469</td>
+            <td class="num">399,052</td>
+            <td class="num">2,261,084</td>
+            <td class="num">40.04</td>
+          </tr>
+        
+          <tr>
+            <td>042110</td><td>에스씨디</td><td>KOSDAQ</td>
+            <td class="num">1,224</td>
+            <td class="num">215,156</td>
+            <td class="num">4,568,312</td>
+            <td class="num">5,751,724</td>
+            <td class="num">26.73</td>
+          </tr>
+        
+          <tr>
+            <td>065950</td><td>웰크론</td><td>KOSDAQ</td>
+            <td class="num">1,001</td>
+            <td class="num">71,384</td>
+            <td class="num">291,646</td>
+            <td class="num">1,638,496</td>
+            <td class="num">22.95</td>
+          </tr>
+        
+          <tr>
+            <td>014970</td><td>삼륭물산</td><td>KOSDAQ</td>
+            <td class="num">4,215</td>
+            <td class="num">28,567</td>
+            <td class="num">180,117</td>
+            <td class="num">515,872</td>
+            <td class="num">18.06</td>
+          </tr>
+        
+          <tr>
+            <td>002700</td><td>신일전자</td><td>KOSPI</td>
+            <td class="num">1,108</td>
+            <td class="num">616,354</td>
+            <td class="num">10,088,843</td>
+            <td class="num">10,542,170</td>
+            <td class="num">17.10</td>
+          </tr>
+        
+          <tr>
+            <td>017180</td><td>명문제약</td><td>KOSPI</td>
+            <td class="num">1,195</td>
+            <td class="num">100,578</td>
+            <td class="num">889,601</td>
+            <td class="num">1,592,401</td>
+            <td class="num">15.83</td>
+          </tr>
+        
+          <tr>
+            <td>046210</td><td>HLB파나진</td><td>KOSDAQ</td>
+            <td class="num">1,051</td>
+            <td class="num">86,536</td>
+            <td class="num">332,454</td>
+            <td class="num">1,344,109</td>
+            <td class="num">15.53</td>
+          </tr>
+        
+          <tr>
+            <td>950160</td><td>코오롱티슈진</td><td>KOSDAQ</td>
+            <td class="num">15,910</td>
+            <td class="num">366,606</td>
+            <td class="num">441,177</td>
+            <td class="num">5,560,384</td>
+            <td class="num">15.17</td>
+          </tr>
+        
+          <tr>
+            <td>004540</td><td>깨끗한나라</td><td>KOSPI</td>
+            <td class="num">1,217</td>
+            <td class="num">144,591</td>
+            <td class="num">145,000</td>
+            <td class="num">1,983,808</td>
+            <td class="num">13.72</td>
+          </tr>
+        
+          <tr>
+            <td>317400</td><td>자이에스앤디</td><td>KOSPI</td>
+            <td class="num">7,050</td>
+            <td class="num">145,841</td>
+            <td class="num">375,247</td>
+            <td class="num">1,923,300</td>
+            <td class="num">13.19</td>
+          </tr>
+        
+          <tr>
+            <td>005860</td><td>한일사료</td><td>KOSDAQ</td>
+            <td class="num">2,370</td>
+            <td class="num">590,749</td>
+            <td class="num">1,627,713</td>
+            <td class="num">7,784,731</td>
+            <td class="num">13.18</td>
+          </tr>
+        
+          <tr>
+            <td>054940</td><td>엑사이엔씨</td><td>KOSDAQ</td>
+            <td class="num">760</td>
+            <td class="num">304,441</td>
+            <td class="num">1,691,369</td>
+            <td class="num">3,684,188</td>
+            <td class="num">12.10</td>
+          </tr>
+        
+          <tr>
+            <td>210980</td><td>SK디앤디</td><td>KOSPI</td>
+            <td class="num">5,660</td>
+            <td class="num">22,061</td>
+            <td class="num">75,949</td>
+            <td class="num">263,650</td>
+            <td class="num">11.95</td>
+          </tr>
+        
+          <tr>
+            <td>285800</td><td>진영</td><td>KOSDAQ</td>
+            <td class="num">798</td>
+            <td class="num">243,454</td>
+            <td class="num">632,054</td>
+            <td class="num">2,880,104</td>
+            <td class="num">11.83</td>
+          </tr>
+        
+          <tr>
+            <td>006660</td><td>삼성공조</td><td>KOSPI</td>
+            <td class="num">12,210</td>
+            <td class="num">259,859</td>
+            <td class="num">1,336,965</td>
+            <td class="num">3,019,534</td>
+            <td class="num">11.62</td>
+          </tr>
+        
+          <tr>
+            <td>127710</td><td>아시아경제</td><td>KOSDAQ</td>
+            <td class="num">1,037</td>
+            <td class="num">23,988</td>
+            <td class="num">110,840</td>
+            <td class="num">278,222</td>
+            <td class="num">11.60</td>
+          </tr>
+        
+          <tr>
+            <td>304840</td><td>피플바이오</td><td>KOSDAQ</td>
+            <td class="num">710</td>
+            <td class="num">92,863</td>
+            <td class="num">170,600</td>
+            <td class="num">1,061,766</td>
+            <td class="num">11.43</td>
+          </tr>
+        
+          <tr>
+            <td>050090</td><td>비케이홀딩스</td><td>KOSDAQ</td>
+            <td class="num">385</td>
+            <td class="num">77,972</td>
+            <td class="num">122,629</td>
+            <td class="num">831,088</td>
+            <td class="num">10.66</td>
+          </tr>
+        
+          <tr>
+            <td>006740</td><td>블루산업개발</td><td>KOSPI</td>
+            <td class="num">986</td>
+            <td class="num">23,120</td>
+            <td class="num">95,990</td>
+            <td class="num">236,728</td>
+            <td class="num">10.24</td>
+          </tr>
+        
+          <tr>
+            <td>102940</td><td>코오롱생명과학</td><td>KOSDAQ</td>
+            <td class="num">17,180</td>
+            <td class="num">34,886</td>
+            <td class="num">40,572</td>
+            <td class="num">337,453</td>
+            <td class="num">9.67</td>
+          </tr>
+        
+          <tr>
+            <td>199730</td><td>바이오인프라</td><td>KOSDAQ</td>
+            <td class="num">2,035</td>
+            <td class="num">15,021</td>
+            <td class="num">29,831</td>
+            <td class="num">137,051</td>
+            <td class="num">9.12</td>
+          </tr>
+        
+          <tr>
+            <td>069920</td><td>엑시온그룹</td><td>KOSDAQ</td>
+            <td class="num">1,235</td>
+            <td class="num">177,082</td>
+            <td class="num">262,279</td>
+            <td class="num">1,600,984</td>
+            <td class="num">9.04</td>
+          </tr>
+        
+          <tr>
+            <td>025870</td><td>신라에스지</td><td>KOSDAQ</td>
+            <td class="num">2,455</td>
+            <td class="num">30,243</td>
+            <td class="num">103,713</td>
+            <td class="num">267,103</td>
+            <td class="num">8.83</td>
+          </tr>
+        
+          <tr>
+            <td>119850</td><td>지엔씨에너지</td><td>KOSDAQ</td>
+            <td class="num">37,400</td>
+            <td class="num">153,222</td>
+            <td class="num">453,858</td>
+            <td class="num">1,218,041</td>
+            <td class="num">7.95</td>
+          </tr>
+        
+          <tr>
+            <td>065690</td><td>파커스</td><td>KOSDAQ</td>
+            <td class="num">1,420</td>
+            <td class="num">16,327</td>
+            <td class="num">35,855</td>
+            <td class="num">127,657</td>
+            <td class="num">7.82</td>
+          </tr>
+        
+          <tr>
+            <td>067770</td><td>세진티에스</td><td>KOSDAQ</td>
+            <td class="num">1,900</td>
+            <td class="num">22,698</td>
+            <td class="num">104,763</td>
+            <td class="num">177,269</td>
+            <td class="num">7.81</td>
+          </tr>
+        
+          <tr>
+            <td>030720</td><td>동원수산</td><td>KOSPI</td>
+            <td class="num">5,710</td>
+            <td class="num">26,926</td>
+            <td class="num">81,416</td>
+            <td class="num">198,759</td>
+            <td class="num">7.38</td>
+          </tr>
+        
+          <tr>
+            <td>196300</td><td>HLB펩</td><td>KOSDAQ</td>
+            <td class="num">3,980</td>
+            <td class="num">11,658</td>
+            <td class="num">14,297</td>
+            <td class="num">85,893</td>
+            <td class="num">7.37</td>
+          </tr>
+        
+          <tr>
+            <td>047920</td><td>HLB제약</td><td>KOSDAQ</td>
+            <td class="num">8,620</td>
+            <td class="num">120,033</td>
+            <td class="num">211,691</td>
+            <td class="num">838,945</td>
+            <td class="num">6.99</td>
+          </tr>
+        
+          <tr>
+            <td>035000</td><td>HS애드</td><td>KOSPI</td>
+            <td class="num">6,230</td>
+            <td class="num">34,554</td>
+            <td class="num">102,553</td>
+            <td class="num">203,524</td>
+            <td class="num">5.89</td>
+          </tr>
+        
+          <tr>
+            <td>340440</td><td>세림B&G</td><td>KOSDAQ</td>
+            <td class="num">854</td>
+            <td class="num">365,985</td>
+            <td class="num">1,134,499</td>
+            <td class="num">2,114,642</td>
+            <td class="num">5.78</td>
+          </tr>
+        
+          <tr>
+            <td>368600</td><td>아이씨에이치</td><td>KOSDAQ</td>
+            <td class="num">1,033</td>
+            <td class="num">151,194</td>
+            <td class="num">210,960</td>
+            <td class="num">866,199</td>
+            <td class="num">5.73</td>
+          </tr>
+        
+          <tr>
+            <td>015260</td><td>에이엔피</td><td>KOSPI</td>
+            <td class="num">418</td>
+            <td class="num">606,994</td>
+            <td class="num">1,290,774</td>
+            <td class="num">3,181,145</td>
+            <td class="num">5.24</td>
+          </tr>
+        
+          <tr>
+            <td>187420</td><td>HLB제넥스</td><td>KOSDAQ</td>
+            <td class="num">1,612</td>
+            <td class="num">122,846</td>
+            <td class="num">205,852</td>
+            <td class="num">611,477</td>
+            <td class="num">4.98</td>
+          </tr>
+        
+          <tr>
+            <td>050110</td><td>캠시스</td><td>KOSDAQ</td>
+            <td class="num">892</td>
+            <td class="num">282,283</td>
+            <td class="num">759,771</td>
+            <td class="num">1,393,009</td>
+            <td class="num">4.93</td>
+          </tr>
+        
+          <tr>
+            <td>215090</td><td>솔디펜스</td><td>KOSDAQ</td>
+            <td class="num">1,371</td>
+            <td class="num">113,303</td>
+            <td class="num">147,248</td>
+            <td class="num">512,126</td>
+            <td class="num">4.52</td>
+          </tr>
+        
+          <tr>
+            <td>067630</td><td>HLB생명과학</td><td>KOSDAQ</td>
+            <td class="num">2,200</td>
+            <td class="num">252,643</td>
+            <td class="num">577,977</td>
+            <td class="num">1,089,773</td>
+            <td class="num">4.31</td>
+          </tr>
+        
+          <tr>
+            <td>278650</td><td>HLB바이오스텝</td><td>KOSDAQ</td>
+            <td class="num">1,800</td>
+            <td class="num">82,307</td>
+            <td class="num">197,415</td>
+            <td class="num">337,079</td>
+            <td class="num">4.10</td>
+          </tr>
+        
+          <tr>
+            <td>052460</td><td>아이크래프트</td><td>KOSDAQ</td>
+            <td class="num">4,420</td>
+            <td class="num">178,963</td>
+            <td class="num">310,961</td>
+            <td class="num">698,222</td>
+            <td class="num">3.90</td>
+          </tr>
+        
+          <tr>
+            <td>226330</td><td>신테카바이오</td><td>KOSDAQ</td>
+            <td class="num">1,583</td>
+            <td class="num">141,963</td>
+            <td class="num">504,747</td>
+            <td class="num">552,060</td>
+            <td class="num">3.89</td>
+          </tr>
+        
+          <tr>
+            <td>037230</td><td>한국팩키지</td><td>KOSDAQ</td>
+            <td class="num">1,382</td>
+            <td class="num">133,565</td>
+            <td class="num">335,486</td>
+            <td class="num">519,042</td>
+            <td class="num">3.89</td>
+          </tr>
+        
+          <tr>
+            <td>003580</td><td>HLB글로벌</td><td>KOSPI</td>
+            <td class="num">1,215</td>
+            <td class="num">218,101</td>
+            <td class="num">508,124</td>
+            <td class="num">844,085</td>
+            <td class="num">3.87</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    
+  </section>
+
+  <section>
+    <h2>🔥 트렌드 키워드 Top 40</h2>
+    
+      <table>
+        <thead><tr><th>#</th><th>키워드</th><th>출처</th><th>지역</th><th class="num">점수</th></tr></thead>
+        <tbody>
+        
+          <tr>
+            <td>1</td>
+            <td><strong>schd</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>2</td>
+            <td><strong>tornado warning</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>3</td>
+            <td><strong>뉴진스</strong></td>
+            <td>naver</td>
+            <td>KR</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>4</td>
+            <td><strong>Stocks</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>5</td>
+            <td><strong>테마주</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>6</td>
+            <td><strong>Top</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>7</td>
+            <td><strong>관련주</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">100</td>
+          </tr>
+        
+          <tr>
+            <td>8</td>
+            <td><strong>anthony smith</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">96</td>
+          </tr>
+        
+          <tr>
+            <td>9</td>
+            <td><strong>다우 존스 산업평균지수</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">96</td>
+          </tr>
+        
+          <tr>
+            <td>10</td>
+            <td><strong>수혜주</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">94</td>
+          </tr>
+        
+          <tr>
+            <td>11</td>
+            <td><strong>linda perhacs</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">92</td>
+          </tr>
+        
+          <tr>
+            <td>12</td>
+            <td><strong>mu</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">92</td>
+          </tr>
+        
+          <tr>
+            <td>13</td>
+            <td><strong>irina shayk</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">88</td>
+          </tr>
+        
+          <tr>
+            <td>14</td>
+            <td><strong>tsmc</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">88</td>
+          </tr>
+        
+          <tr>
+            <td>15</td>
+            <td><strong>GLP-1</strong></td>
+            <td>naver</td>
+            <td>KR</td>
+            <td class="num">84</td>
+          </tr>
+        
+          <tr>
+            <td>16</td>
+            <td><strong>티엔엔터테인먼트</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">84</td>
+          </tr>
+        
+          <tr>
+            <td>17</td>
+            <td><strong>rangers vs rays</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">84</td>
+          </tr>
+        
+          <tr>
+            <td>18</td>
+            <td><strong>denzel ward</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">80</td>
+          </tr>
+        
+          <tr>
+            <td>19</td>
+            <td><strong>브로드컴</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">80</td>
+          </tr>
+        
+          <tr>
+            <td>20</td>
+            <td><strong>총정리</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">78</td>
+          </tr>
+        
+          <tr>
+            <td>21</td>
+            <td><strong>birthright citizenship in the united states</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">76</td>
+          </tr>
+        
+          <tr>
+            <td>22</td>
+            <td><strong>김경문</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">76</td>
+          </tr>
+        
+          <tr>
+            <td>23</td>
+            <td><strong>낸드</strong></td>
+            <td>naver</td>
+            <td>KR</td>
+            <td class="num">75</td>
+          </tr>
+        
+          <tr>
+            <td>24</td>
+            <td><strong>하이닉스 실적</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">72</td>
+          </tr>
+        
+          <tr>
+            <td>25</td>
+            <td><strong>donald trump mail voting order</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">72</td>
+          </tr>
+        
+          <tr>
+            <td>26</td>
+            <td><strong>블로그</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">70</td>
+          </tr>
+        
+          <tr>
+            <td>27</td>
+            <td><strong>네이버</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">70</td>
+          </tr>
+        
+          <tr>
+            <td>28</td>
+            <td><strong>Stock</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">70</td>
+          </tr>
+        
+          <tr>
+            <td>29</td>
+            <td><strong>Trending</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">70</td>
+          </tr>
+        
+          <tr>
+            <td>30</td>
+            <td><strong>ETFs</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">70</td>
+          </tr>
+        
+          <tr>
+            <td>31</td>
+            <td><strong>jakub mensik</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">68</td>
+          </tr>
+        
+          <tr>
+            <td>32</td>
+            <td><strong>쯔양</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">68</td>
+          </tr>
+        
+          <tr>
+            <td>33</td>
+            <td><strong>영화</strong></td>
+            <td>google</td>
+            <td>KR</td>
+            <td class="num">64</td>
+          </tr>
+        
+          <tr>
+            <td>34</td>
+            <td><strong>michigan</strong></td>
+            <td>google</td>
+            <td>US</td>
+            <td class="num">64</td>
+          </tr>
+        
+          <tr>
+            <td>35</td>
+            <td><strong>실시간</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">62</td>
+          </tr>
+        
+          <tr>
+            <td>36</td>
+            <td><strong>com</strong></td>
+            <td>web</td>
+            <td>KR</td>
+            <td class="num">62</td>
+          </tr>
+        
+          <tr>
+            <td>37</td>
+            <td><strong>Today</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">62</td>
+          </tr>
+        
+          <tr>
+            <td>38</td>
+            <td><strong>amp</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">62</td>
+          </tr>
+        
+          <tr>
+            <td>39</td>
+            <td><strong>Thematic</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">62</td>
+          </tr>
+        
+          <tr>
+            <td>40</td>
+            <td><strong>ETF</strong></td>
+            <td>web</td>
+            <td>US</td>
+            <td class="num">62</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    
+  </section>
+
+  <div class="disclaimer">
+    ⚠️ 본 결과물은 정보 제공 목적이며 투자 권유가 아닙니다. 트렌드 데이터는 후행 지표일 수 있으며,
+    거래량 급증은 악재성 매도 신호일 수도 있습니다. 등락률·뉴스 등과 교차검증 후 의사결정하세요.
+    모든 투자 판단과 책임은 본인에게 있습니다.
+  </div>
+
+</div>
+
+<div class="nav-footer">
+  <a href="../index.html" class="nav-home">🏠 아카이브 홈</a>
+  <a href="./dashboard.html" class="nav-other">📊 대시보드</a>
+  <a href="./report.xlsx" class="nav-other">📥 Excel 다운로드</a>
+</div>
+
+</body>
+</html>

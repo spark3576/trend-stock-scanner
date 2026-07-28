@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-29",
+  "trends_total": 61,
+  "primary_total": 105,
+  "secondary_total": 50,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 1,
+  "watch": 0,
+  "theme_distribution": {
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "044340",
+      "name": "위닉스",
+      "score": 66.9,
+      "classification": "🟡 주목",
+      "theme": "데이터센터/AI인프라"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 16
+  }
+}
