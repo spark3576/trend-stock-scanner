@@ -1,0 +1,35 @@
+{
+  "date": "2026-07-31",
+  "trends_total": 60,
+  "primary_total": 96,
+  "secondary_total": 44,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "데이터센터/AI인프라": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "044340",
+      "name": "위닉스",
+      "score": 51.1,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 43.3,
+      "classification": "—",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 15
+  }
+}
