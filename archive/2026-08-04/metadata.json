@@ -1,0 +1,35 @@
+{
+  "date": "2026-08-04",
+  "trends_total": 55,
+  "primary_total": 106,
+  "secondary_total": 48,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "방산": 1,
+    "K-콘텐츠/엔터": 1
+  },
+  "top_picks": [
+    {
+      "code": "064350",
+      "name": "현대로템",
+      "score": 50.0,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    },
+    {
+      "code": "352820",
+      "name": "하이브",
+      "score": 44.4,
+      "classification": "—",
+      "theme": "K-콘텐츠/엔터"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 10
+  }
+}
