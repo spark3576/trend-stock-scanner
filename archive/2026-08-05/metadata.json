@@ -1,0 +1,17 @@
+{
+  "date": "2026-08-05",
+  "trends_total": 50,
+  "primary_total": 100,
+  "secondary_total": 39,
+  "momentum_total": 0,
+  "strong": 0,
+  "notable": 0,
+  "watch": 0,
+  "theme_distribution": {},
+  "top_picks": [],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 5
+  }
+}
