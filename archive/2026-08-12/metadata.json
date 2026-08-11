@@ -1,0 +1,35 @@
+{
+  "date": "2026-08-12",
+  "trends_total": 61,
+  "primary_total": 117,
+  "secondary_total": 39,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 2,
+  "theme_distribution": {
+    "데이터센터/AI인프라": 1,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "008060",
+      "name": "대덕전자",
+      "score": 51.2,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "108860",
+      "name": "셀바스AI",
+      "score": 49.7,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 16
+  }
+}
