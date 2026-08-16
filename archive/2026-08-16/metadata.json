@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-16",
+  "trends_total": 51,
+  "primary_total": 151,
+  "secondary_total": 45,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "우주/위성": 1
+  },
+  "top_picks": [
+    {
+      "code": "455900",
+      "name": "쎄트렉아이",
+      "score": 48.5,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 6
+  }
+}
