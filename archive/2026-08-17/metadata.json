@@ -1,0 +1,43 @@
+{
+  "date": "2026-08-17",
+  "trends_total": 50,
+  "primary_total": 146,
+  "secondary_total": 42,
+  "momentum_total": 3,
+  "strong": 1,
+  "notable": 0,
+  "watch": 2,
+  "theme_distribution": {
+    "[직접매칭]": 1,
+    "방산": 1,
+    "우주/위성": 1
+  },
+  "top_picks": [
+    {
+      "code": "228670",
+      "name": "레이",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "103140",
+      "name": "풍산",
+      "score": 56.1,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    },
+    {
+      "code": "455900",
+      "name": "쎄트렉아이",
+      "score": 49.5,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 5
+  }
+}
