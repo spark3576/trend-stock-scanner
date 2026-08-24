@@ -1,15 +1,14 @@
 {
   "date": "2026-08-24",
   "trends_total": 50,
-  "primary_total": 280,
-  "secondary_total": 109,
-  "momentum_total": 5,
+  "primary_total": 270,
+  "secondary_total": 110,
+  "momentum_total": 4,
   "strong": 0,
-  "notable": 1,
+  "notable": 0,
   "watch": 3,
   "theme_distribution": {
     "K-콘텐츠/엔터": 2,
-    "2차전지/배터리": 1,
     "[직접매칭]": 1,
     "데이터센터/AI인프라": 1
   },
@@ -17,35 +16,28 @@
     {
       "code": "035900",
       "name": "JYP Ent.",
-      "score": 66.3,
-      "classification": "🟡 주목",
-      "theme": "K-콘텐츠/엔터"
-    },
-    {
-      "code": "122870",
-      "name": "와이지엔터테인먼트",
-      "score": 56.8,
+      "score": 55.4,
       "classification": "⚪ 관찰",
       "theme": "K-콘텐츠/엔터"
-    },
-    {
-      "code": "066970",
-      "name": "엘앤에프",
-      "score": 51.5,
-      "classification": "⚪ 관찰",
-      "theme": "2차전지/배터리"
     },
     {
       "code": "228670",
       "name": "레이",
-      "score": 50.6,
+      "score": 49.1,
       "classification": "⚪ 관찰",
       "theme": "[직접매칭]"
     },
     {
+      "code": "122870",
+      "name": "와이지엔터테인먼트",
+      "score": 45.5,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
       "code": "066970",
       "name": "엘앤에프",
-      "score": 42.4,
+      "score": 42.9,
       "classification": "—",
       "theme": "데이터센터/AI인프라"
     }
