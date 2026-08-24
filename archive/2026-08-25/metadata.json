@@ -1,0 +1,35 @@
+{
+  "date": "2026-08-25",
+  "trends_total": 55,
+  "primary_total": 297,
+  "secondary_total": 119,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "사이버보안": 1,
+    "전력/그리드": 1
+  },
+  "top_picks": [
+    {
+      "code": "356890",
+      "name": "싸이버원",
+      "score": 56.3,
+      "classification": "⚪ 관찰",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "103590",
+      "name": "일진전기",
+      "score": 43.9,
+      "classification": "—",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 10
+  }
+}
