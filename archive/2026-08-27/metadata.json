@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-27",
+  "trends_total": 60,
+  "primary_total": 212,
+  "secondary_total": 70,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 0,
+  "watch": 2,
+  "theme_distribution": {
+    "2차전지/배터리": 1,
+    "데이터센터/AI인프라": 1,
+    "[직접매칭]": 1,
+    "바이오/제약": 1
+  },
+  "top_picks": [
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 50.3,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 47.3,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "006260",
+      "name": "LS",
+      "score": 44.8,
+      "classification": "—",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 43.8,
+      "classification": "—",
+      "theme": "바이오/제약"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 15
+  }
+}
