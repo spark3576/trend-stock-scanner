@@ -1,0 +1,59 @@
+{
+  "date": "2026-08-31",
+  "trends_total": 70,
+  "primary_total": 161,
+  "secondary_total": 63,
+  "momentum_total": 6,
+  "strong": 0,
+  "notable": 0,
+  "watch": 4,
+  "theme_distribution": {
+    "바이오/제약": 2,
+    "의료미용/톡신": 1,
+    "2차전지/배터리": 1,
+    "[직접매칭]": 1,
+    "재생에너지/풍력": 1
+  },
+  "top_picks": [
+    {
+      "code": "214150",
+      "name": "클래시스",
+      "score": 58.7,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "214150",
+      "name": "클래시스",
+      "score": 52.3,
+      "classification": "⚪ 관찰",
+      "theme": "의료미용/톡신"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 52.0,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 48.1,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "006260",
+      "name": "LS",
+      "score": 43.6,
+      "classification": "—",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "naver": 25,
+    "google": 20
+  }
+}
