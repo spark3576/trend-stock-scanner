@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-02",
+  "trends_total": 58,
+  "primary_total": 159,
+  "secondary_total": 65,
+  "momentum_total": 6,
+  "strong": 0,
+  "notable": 0,
+  "watch": 6,
+  "theme_distribution": {
+    "바이오/제약": 2,
+    "2차전지/배터리": 2,
+    "[직접매칭]": 2
+  },
+  "top_picks": [
+    {
+      "code": "214150",
+      "name": "클래시스",
+      "score": 55.4,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 55.0,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "293490",
+      "name": "카카오게임즈",
+      "score": 52.4,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "377300",
+      "name": "카카오페이",
+      "score": 51.2,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 48.6,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 13
+  }
+}
