@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-03",
+  "trends_total": 56,
+  "primary_total": 146,
+  "secondary_total": 70,
+  "momentum_total": 3,
+  "strong": 0,
+  "notable": 0,
+  "watch": 3,
+  "theme_distribution": {
+    "바이오/제약": 2,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "196170",
+      "name": "알테오젠",
+      "score": 52.3,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 50.8,
+      "classification": "⚪ 관찰",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "258790",
+      "name": "소프트캠프",
+      "score": 49.4,
+      "classification": "⚪ 관찰",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 11
+  }
+}
