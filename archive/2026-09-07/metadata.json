@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-07",
+  "trends_total": 54,
+  "primary_total": 165,
+  "secondary_total": 70,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 57.2,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 9
+  }
+}
