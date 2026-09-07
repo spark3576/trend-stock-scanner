@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-08",
+  "trends_total": 52,
+  "primary_total": 156,
+  "secondary_total": 60,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "086900",
+      "name": "메디톡스",
+      "score": 51.2,
+      "classification": "⚪ 관찰",
+      "theme": "의료미용/톡신"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 7
+  }
+}
