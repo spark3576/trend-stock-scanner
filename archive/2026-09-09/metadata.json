@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-09",
+  "trends_total": 51,
+  "primary_total": 162,
+  "secondary_total": 64,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 3,
+  "watch": 1,
+  "theme_distribution": {
+    "재생에너지/풍력": 1,
+    "2차전지/배터리": 1,
+    "[직접매칭]": 1,
+    "원전/SMR": 1
+  },
+  "top_picks": [
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 67.0,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 66.7,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "000880",
+      "name": "한화",
+      "score": 64.2,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "052690",
+      "name": "한전기술",
+      "score": 52.7,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 6
+  }
+}
