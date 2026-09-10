@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-11",
+  "trends_total": 54,
+  "primary_total": 143,
+  "secondary_total": 49,
+  "momentum_total": 6,
+  "strong": 0,
+  "notable": 0,
+  "watch": 6,
+  "theme_distribution": {
+    "[직접매칭]": 2,
+    "원전/SMR": 2,
+    "데이터센터/AI인프라": 1,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "003550",
+      "name": "LG",
+      "score": 56.5,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "052690",
+      "name": "한전기술",
+      "score": 53.9,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 53.0,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "196170",
+      "name": "알테오젠",
+      "score": 52.0,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 50.5,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 9
+  }
+}
