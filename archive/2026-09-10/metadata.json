@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-10",
+  "trends_total": 52,
+  "primary_total": 170,
+  "secondary_total": 63,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 0,
+  "watch": 3,
+  "theme_distribution": {
+    "원전/SMR": 2,
+    "데이터센터/AI인프라": 1,
+    "바이오/제약": 1
+  },
+  "top_picks": [
+    {
+      "code": "052690",
+      "name": "한전기술",
+      "score": 55.2,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 48.5,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "034020",
+      "name": "두산에너빌리티",
+      "score": 47.9,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "196170",
+      "name": "알테오젠",
+      "score": 42.5,
+      "classification": "—",
+      "theme": "바이오/제약"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 7
+  }
+}
