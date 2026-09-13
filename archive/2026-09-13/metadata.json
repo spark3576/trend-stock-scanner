@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-13",
+  "trends_total": 57,
+  "primary_total": 136,
+  "secondary_total": 50,
+  "momentum_total": 5,
+  "strong": 0,
+  "notable": 1,
+  "watch": 4,
+  "theme_distribution": {
+    "원전/SMR": 2,
+    "사이버보안": 1,
+    "2차전지/배터리": 1,
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "258790",
+      "name": "소프트캠프",
+      "score": 60.5,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 59.6,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "052690",
+      "name": "한전기술",
+      "score": 56.8,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    },
+    {
+      "code": "066970",
+      "name": "엘앤에프",
+      "score": 56.5,
+      "classification": "⚪ 관찰",
+      "theme": "데이터센터/AI인프라"
+    },
+    {
+      "code": "034020",
+      "name": "두산에너빌리티",
+      "score": 48.7,
+      "classification": "⚪ 관찰",
+      "theme": "원전/SMR"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 12
+  }
+}
