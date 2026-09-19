@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-19",
+  "trends_total": 30,
+  "primary_total": 128,
+  "secondary_total": 62,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "재생에너지/풍력": 1,
+    "방산": 1
+  },
+  "top_picks": [
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 47.8,
+      "classification": "⚪ 관찰",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 42.4,
+      "classification": "—",
+      "theme": "방산"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 10
+  }
+}
