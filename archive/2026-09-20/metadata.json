@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-20",
+  "trends_total": 27,
+  "primary_total": 128,
+  "secondary_total": 62,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "방산": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 47.5,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 7
+  }
+}
