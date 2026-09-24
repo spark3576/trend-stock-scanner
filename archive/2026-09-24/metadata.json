@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-24",
+  "trends_total": 25,
+  "primary_total": 130,
+  "secondary_total": 65,
+  "momentum_total": 3,
+  "strong": 0,
+  "notable": 0,
+  "watch": 3,
+  "theme_distribution": {
+    "방산": 1,
+    "AI/반도체": 1,
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 54.3,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    },
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 51.7,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "375500",
+      "name": "DL이앤씨",
+      "score": 49.4,
+      "classification": "⚪ 관찰",
+      "theme": "의료미용/톡신"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 5
+  }
+}
