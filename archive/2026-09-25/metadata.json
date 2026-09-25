@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-25",
+  "trends_total": 26,
+  "primary_total": 131,
+  "secondary_total": 58,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 1,
+  "watch": 3,
+  "theme_distribution": {
+    "재생에너지/풍력": 1,
+    "AI/반도체": 1,
+    "K-콘텐츠/엔터": 1,
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 64.2,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 51.7,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "041510",
+      "name": "에스엠",
+      "score": 49.9,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "375500",
+      "name": "DL이앤씨",
+      "score": 49.9,
+      "classification": "⚪ 관찰",
+      "theme": "의료미용/톡신"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 6
+  }
+}
