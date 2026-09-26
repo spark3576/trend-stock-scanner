@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-26",
+  "trends_total": 23,
+  "primary_total": 149,
+  "secondary_total": 64,
+  "momentum_total": 1,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "000990",
+      "name": "DB하이텍",
+      "score": 54.4,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 3
+  }
+}
