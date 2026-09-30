@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-01",
+  "trends_total": 31,
+  "primary_total": 179,
+  "secondary_total": 77,
+  "momentum_total": 7,
+  "strong": 0,
+  "notable": 4,
+  "watch": 3,
+  "theme_distribution": {
+    "사이버보안": 3,
+    "AI/반도체": 2,
+    "방산": 1,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 65.8,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 65.5,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 63.7,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 60.1,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "356680",
+      "name": "엑스게이트",
+      "score": 58.8,
+      "classification": "⚪ 관찰",
+      "theme": "사이버보안"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 11
+  }
+}
