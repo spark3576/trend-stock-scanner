@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-02",
+  "trends_total": 34,
+  "primary_total": 170,
+  "secondary_total": 69,
+  "momentum_total": 8,
+  "strong": 0,
+  "notable": 1,
+  "watch": 6,
+  "theme_distribution": {
+    "AI/반도체": 2,
+    "방산": 1,
+    "전력/그리드": 1,
+    "재생에너지/풍력": 1,
+    "사이버보안": 1,
+    "우주/위성": 1,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 73.1,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 59.1,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 57.1,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 56.4,
+      "classification": "⚪ 관찰",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 48.5,
+      "classification": "⚪ 관찰",
+      "theme": "재생에너지/풍력"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 14
+  }
+}
