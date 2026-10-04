@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-05",
+  "trends_total": 45,
+  "primary_total": 164,
+  "secondary_total": 70,
+  "momentum_total": 10,
+  "strong": 0,
+  "notable": 2,
+  "watch": 8,
+  "theme_distribution": {
+    "사이버보안": 2,
+    "AI/반도체": 2,
+    "방산": 1,
+    "우주/위성": 1,
+    "[직접매칭]": 1,
+    "전력/그리드": 1,
+    "재생에너지/풍력": 1,
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 72.2,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 62.4,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "272210",
+      "name": "한화시스템",
+      "score": 57.2,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 56.7,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "036570",
+      "name": "NC",
+      "score": 56.2,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "naver": 25,
+    "google": 20
+  }
+}
