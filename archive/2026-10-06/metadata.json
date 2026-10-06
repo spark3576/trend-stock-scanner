@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-06",
+  "trends_total": 44,
+  "primary_total": 168,
+  "secondary_total": 69,
+  "momentum_total": 6,
+  "strong": 0,
+  "notable": 2,
+  "watch": 4,
+  "theme_distribution": {
+    "AI/반도체": 2,
+    "방산": 1,
+    "전력/그리드": 1,
+    "의료미용/톡신": 1,
+    "사이버보안": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 71.1,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 60.5,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 59.0,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "001440",
+      "name": "대한전선",
+      "score": 55.6,
+      "classification": "⚪ 관찰",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "145020",
+      "name": "휴젤",
+      "score": 51.2,
+      "classification": "⚪ 관찰",
+      "theme": "의료미용/톡신"
+    }
+  ],
+  "trend_sources": {
+    "naver": 24,
+    "google": 20
+  }
+}
