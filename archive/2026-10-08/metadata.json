@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-08",
+  "trends_total": 43,
+  "primary_total": 194,
+  "secondary_total": 76,
+  "momentum_total": 11,
+  "strong": 1,
+  "notable": 4,
+  "watch": 3,
+  "theme_distribution": {
+    "사이버보안": 3,
+    "AI/반도체": 2,
+    "방산": 1,
+    "[직접매칭]": 1,
+    "2차전지/배터리": 1,
+    "전력/그리드": 1,
+    "로보틱스": 1,
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 83.6,
+      "classification": "🔴 강력주목",
+      "theme": "방산"
+    },
+    {
+      "code": "115500",
+      "name": "케이씨에스",
+      "score": 67.7,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 67.7,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 65.0,
+      "classification": "🟡 주목",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "007980",
+      "name": "TP",
+      "score": 62.3,
+      "classification": "🟡 주목",
+      "theme": "[직접매칭]"
+    }
+  ],
+  "trend_sources": {
+    "naver": 23,
+    "google": 20
+  }
+}
