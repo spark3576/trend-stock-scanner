@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-09",
+  "trends_total": 44,
+  "primary_total": 185,
+  "secondary_total": 65,
+  "momentum_total": 9,
+  "strong": 0,
+  "notable": 3,
+  "watch": 6,
+  "theme_distribution": {
+    "사이버보안": 2,
+    "AI/반도체": 2,
+    "방산": 1,
+    "재생에너지/풍력": 1,
+    "우주/위성": 1,
+    "2차전지/배터리": 1,
+    "전력/그리드": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 73.3,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 61.3,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "115500",
+      "name": "케이씨에스",
+      "score": 61.3,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 57.2,
+      "classification": "⚪ 관찰",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "189300",
+      "name": "인텔리안테크",
+      "score": 55.2,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "naver": 24,
+    "google": 20
+  }
+}
