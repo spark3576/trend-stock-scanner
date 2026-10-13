@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-13",
+  "trends_total": 35,
+  "primary_total": 220,
+  "secondary_total": 77,
+  "momentum_total": 7,
+  "strong": 1,
+  "notable": 4,
+  "watch": 2,
+  "theme_distribution": {
+    "사이버보안": 3,
+    "우주/위성": 2,
+    "방산": 1,
+    "2차전지/배터리": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 80.6,
+      "classification": "🔴 강력주목",
+      "theme": "방산"
+    },
+    {
+      "code": "115500",
+      "name": "케이씨에스",
+      "score": 67.5,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 67.5,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "060280",
+      "name": "큐로컴",
+      "score": 62.8,
+      "classification": "🟡 주목",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "272210",
+      "name": "한화시스템",
+      "score": 62.7,
+      "classification": "🟡 주목",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 15
+  }
+}
