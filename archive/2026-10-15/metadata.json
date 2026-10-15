@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-15",
+  "trends_total": 33,
+  "primary_total": 252,
+  "secondary_total": 85,
+  "momentum_total": 8,
+  "strong": 0,
+  "notable": 0,
+  "watch": 7,
+  "theme_distribution": {
+    "방산": 2,
+    "AI/반도체": 2,
+    "[직접매칭]": 2,
+    "2차전지/배터리": 1,
+    "K-콘텐츠/엔터": 1
+  },
+  "top_picks": [
+    {
+      "code": "064350",
+      "name": "현대로템",
+      "score": 59.4,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    },
+    {
+      "code": "012450",
+      "name": "한화에어로스페이스",
+      "score": 58.7,
+      "classification": "⚪ 관찰",
+      "theme": "방산"
+    },
+    {
+      "code": "058470",
+      "name": "리노공업",
+      "score": 58.6,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "240810",
+      "name": "원익IPS",
+      "score": 57.3,
+      "classification": "⚪ 관찰",
+      "theme": "AI/반도체"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 53.5,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 13
+  }
+}
