@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-20",
+  "trends_total": 31,
+  "primary_total": 230,
+  "secondary_total": 64,
+  "momentum_total": 11,
+  "strong": 1,
+  "notable": 7,
+  "watch": 3,
+  "theme_distribution": {
+    "[직접매칭]": 3,
+    "재생에너지/풍력": 3,
+    "2차전지/배터리": 3,
+    "K-콘텐츠/엔터": 1,
+    "방산": 1
+  },
+  "top_picks": [
+    {
+      "code": "000400",
+      "name": "롯데손해보험",
+      "score": 82.2,
+      "classification": "🔴 강력주목",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "204270",
+      "name": "제이앤티씨",
+      "score": 70.0,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "score": 64.7,
+      "classification": "🟡 주목",
+      "theme": "재생에너지/풍력"
+    },
+    {
+      "code": "086520",
+      "name": "에코프로",
+      "score": 62.3,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 11
+  }
+}
