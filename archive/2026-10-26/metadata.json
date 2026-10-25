@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-26",
+  "trends_total": 29,
+  "primary_total": 233,
+  "secondary_total": 68,
+  "momentum_total": 7,
+  "strong": 0,
+  "notable": 0,
+  "watch": 6,
+  "theme_distribution": {
+    "2차전지/배터리": 4,
+    "[직접매칭]": 1,
+    "K-콘텐츠/엔터": 1,
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "065770",
+      "name": "CS",
+      "score": 58.6,
+      "classification": "⚪ 관찰",
+      "theme": "[직접매칭]"
+    },
+    {
+      "code": "086520",
+      "name": "에코프로",
+      "score": 58.1,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 57.9,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "373220",
+      "name": "LG에너지솔루션",
+      "score": 57.6,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "247540",
+      "name": "에코프로비엠",
+      "score": 55.5,
+      "classification": "⚪ 관찰",
+      "theme": "2차전지/배터리"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 9
+  }
+}
