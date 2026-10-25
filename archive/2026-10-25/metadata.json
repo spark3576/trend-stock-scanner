@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-25",
+  "trends_total": 25,
+  "primary_total": 233,
+  "secondary_total": 68,
+  "momentum_total": 2,
+  "strong": 0,
+  "notable": 0,
+  "watch": 1,
+  "theme_distribution": {
+    "K-콘텐츠/엔터": 1,
+    "데이터센터/AI인프라": 1
+  },
+  "top_picks": [
+    {
+      "code": "352820",
+      "name": "하이브",
+      "score": 47.2,
+      "classification": "⚪ 관찰",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "418550",
+      "name": "제이앤티씨",
+      "score": 40.5,
+      "classification": "—",
+      "theme": "데이터센터/AI인프라"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 5
+  }
+}
