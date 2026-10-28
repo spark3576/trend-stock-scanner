@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-28",
+  "trends_total": 27,
+  "primary_total": 195,
+  "secondary_total": 55,
+  "momentum_total": 13,
+  "strong": 1,
+  "notable": 7,
+  "watch": 4,
+  "theme_distribution": {
+    "방산": 5,
+    "K-콘텐츠/엔터": 3,
+    "2차전지/배터리": 2,
+    "사이버보안": 2,
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "065450",
+      "name": "빅텍",
+      "score": 86.3,
+      "classification": "🔴 강력주목",
+      "theme": "방산"
+    },
+    {
+      "code": "035900",
+      "name": "JYP Ent.",
+      "score": 70.3,
+      "classification": "🟡 주목",
+      "theme": "K-콘텐츠/엔터"
+    },
+    {
+      "code": "079550",
+      "name": "LIG넥스원",
+      "score": 68.3,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "064350",
+      "name": "현대로템",
+      "score": 66.6,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "253450",
+      "name": "스튜디오드래곤",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "K-콘텐츠/엔터"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 7
+  }
+}
