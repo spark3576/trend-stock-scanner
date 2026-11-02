@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-02",
+  "trends_total": 33,
+  "primary_total": 183,
+  "secondary_total": 64,
+  "momentum_total": 4,
+  "strong": 0,
+  "notable": 2,
+  "watch": 2,
+  "theme_distribution": {
+    "방산": 2,
+    "사이버보안": 1,
+    "우주/위성": 1
+  },
+  "top_picks": [
+    {
+      "code": "079550",
+      "name": "LIG넥스원",
+      "score": 65.9,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "064350",
+      "name": "현대로템",
+      "score": 62.8,
+      "classification": "🟡 주목",
+      "theme": "방산"
+    },
+    {
+      "code": "053800",
+      "name": "안랩",
+      "score": 54.8,
+      "classification": "⚪ 관찰",
+      "theme": "사이버보안"
+    },
+    {
+      "code": "079550",
+      "name": "LIG넥스원",
+      "score": 51.5,
+      "classification": "⚪ 관찰",
+      "theme": "우주/위성"
+    }
+  ],
+  "trend_sources": {
+    "google": 20,
+    "naver": 13
+  }
+}
