@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-09",
+  "trends_total": 65,
+  "primary_total": 218,
+  "secondary_total": 59,
+  "momentum_total": 22,
+  "strong": 1,
+  "notable": 13,
+  "watch": 7,
+  "theme_distribution": {
+    "2차전지/배터리": 5,
+    "전력/그리드": 4,
+    "바이오/제약": 3,
+    "우주/위성": 2,
+    "K-콘텐츠/엔터": 2,
+    "재생에너지/풍력": 2,
+    "사이버보안": 2,
+    "[직접매칭]": 1,
+    "AI/반도체": 1
+  },
+  "top_picks": [
+    {
+      "code": "099190",
+      "name": "아이센스",
+      "score": 84.8,
+      "classification": "🔴 강력주목",
+      "theme": "우주/위성"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 74.1,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "010120",
+      "name": "LS ELECTRIC",
+      "score": 74.0,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "score": 74.0,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "267260",
+      "name": "HD현대일렉트릭",
+      "score": 73.0,
+      "classification": "🟡 주목",
+      "theme": "전력/그리드"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 20
+  }
+}
