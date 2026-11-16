@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-16",
+  "trends_total": 61,
+  "primary_total": 140,
+  "secondary_total": 39,
+  "momentum_total": 11,
+  "strong": 0,
+  "notable": 4,
+  "watch": 5,
+  "theme_distribution": {
+    "바이오/제약": 4,
+    "2차전지/배터리": 2,
+    "재생에너지/풍력": 1,
+    "K-콘텐츠/엔터": 1,
+    "방산": 1,
+    "전력/그리드": 1,
+    "의료미용/톡신": 1
+  },
+  "top_picks": [
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "score": 68.3,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "302440",
+      "name": "SK바이오사이언스",
+      "score": 66.7,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "121600",
+      "name": "나노신소재",
+      "score": 66.5,
+      "classification": "🟡 주목",
+      "theme": "2차전지/배터리"
+    },
+    {
+      "code": "068270",
+      "name": "셀트리온",
+      "score": 63.5,
+      "classification": "🟡 주목",
+      "theme": "바이오/제약"
+    },
+    {
+      "code": "112610",
+      "name": "씨에스윈드",
+      "score": 59.4,
+      "classification": "⚪ 관찰",
+      "theme": "재생에너지/풍력"
+    }
+  ],
+  "trend_sources": {
+    "web": 25,
+    "google": 20,
+    "naver": 16
+  }
+}
